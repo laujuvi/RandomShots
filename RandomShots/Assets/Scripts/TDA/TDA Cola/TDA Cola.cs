@@ -16,12 +16,10 @@ public class Cola : ICola
 
         }
 
-        bullets[indice] = x;
+        bullets[0] = x;
 
         indice++;
     }
-
-
         public bool ColaVacia()
     {
         return (indice == 0);
@@ -29,7 +27,6 @@ public class Cola : ICola
 
     public void Desacolar()
     {
-        bullets[indice - 1] = null;
         indice--;
     }
 
@@ -46,10 +43,9 @@ public class Cola : ICola
     public void ImprimoCola()
     {
 
-        for (int i = indice - 1; i >= 0; i--)
+        for (int i = indice ; i >= 0; i--)
         {
             Debug.Log(bullets[i].name);
-
         }
     }
 

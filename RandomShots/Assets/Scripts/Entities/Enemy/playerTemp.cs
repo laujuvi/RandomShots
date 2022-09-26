@@ -17,7 +17,6 @@ public class playerTemp :MonoBehaviour
         cola.Inicializarcola(maximo);
     }
 
-    // Update is called once per frame
     
     private void Update()
     {
@@ -34,17 +33,16 @@ public class playerTemp :MonoBehaviour
 
       
          if (Input.GetKeyDown(KeyCode.P))
-        {
+         { 
             cola.Desacolar();
             cola.ImprimoCola();
+         }
 
-        }
 
-        
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       // cubito cubito_ = gameObject.GetComponent<cubito>();
         if(collision.gameObject.CompareTag("Bullets"))
         {
             
@@ -54,8 +52,6 @@ public class playerTemp :MonoBehaviour
                 currentMax++;
                 collision.gameObject.SetActive(false);
             }
-
-
 
         }
 
