@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerTemp : MonoBehaviour
+public class playerTemp :MonoBehaviour
 {
     public float speed;
+    private Cola cola;
+    public int maximo;
+    public int currentMax;
+    private void Awake()
+    {
+        cola = new Cola();
+    }
     void Start()
     {
-        
+        cola.Inicializarcola(maximo);
     }
 
     // Update is called once per frame
@@ -24,5 +31,33 @@ public class playerTemp : MonoBehaviour
         {
             transform.Translate(direction * Time.deltaTime * speed);
         }
+
+      
+         if (Input.GetKeyDown(KeyCode.P))
+        {
+            cola.Desacolar();
+            cola.ImprimoCola();
+
+        }
+
+        
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       // cubito cubito_ = gameObject.GetComponent<cubito>();
+        if(collision.gameObject.CompareTag("Bullets"))
+        {
+            
+            if (currentMax < maximo)
+            {
+                cola.Acolar(collision.gameObject);
+                currentMax++;
+                collision.gameObject.SetActive(false);
+            }
+
+
+
+        }
+
     }
 }

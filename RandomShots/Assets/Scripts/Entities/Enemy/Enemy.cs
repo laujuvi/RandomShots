@@ -23,9 +23,8 @@ public class Enemy : Actor, IDamageable
     public  float targetAngle;
     public  float angle;
     public  float distanceMin;
-    private float timeToShoot=0.1f;
-    private float currentTime;
-
+    private float TimeToShot = 5f;
+    private float TimeShoot = 0.1f;
     public int nextPoint;
     
     public States state;
@@ -39,6 +38,7 @@ public class Enemy : Actor, IDamageable
 
     private bool ISee;
     private bool IsFollow;
+    private bool Shooting;
     
     public int MaxLife => 100;
 
@@ -67,6 +67,7 @@ public class Enemy : Actor, IDamageable
     {
         distanceToPlayer = Vector3.Distance(transform.position, target.position);
         LastPointSee();
+
     }
     private void LastPointSee()
     {
@@ -103,7 +104,7 @@ public class Enemy : Actor, IDamageable
                 Patrol();
                 break;
             case States.Attack:
-                TimeToSpam();
+                CheckShoot();
                 break;
         }
     }
@@ -166,17 +167,7 @@ public class Enemy : Actor, IDamageable
         }
 
     }
-    private void TimeToSpam()
-    {
-        if (timeToShoot < currentTime)
-        {
-            timeToShoot = 0;
-            Shoot();
-            timeToShoot = 0.1f;
-        }
-        currentTime += Time.deltaTime;
-            
-    }
+  
     private void Persuit(Transform target)
     {
 
@@ -206,6 +197,16 @@ public class Enemy : Actor, IDamageable
         bullet.transform.rotation = pointToShoot.transform.rotation;
 
     }
+   
+    private void CheckShoot()
+    {
+        if (TimeShoot > TimeToShot)
+        {
+            TimeShoot = 0;
+            Shoot();
+        }
+        TimeShoot += Time.deltaTime;
+    }
 
     private void OnDrawGizmos()
     {
@@ -218,5 +219,9 @@ public class Enemy : Actor, IDamageable
         Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 0, -angle / 2) * transform.right * distance);
     }
 
-
+    private IEnumerator TimeToShooting(int seconds)
+    {
+        yield return new WaitForSeconds(2);
+         Shooting= false;
+    }
 }
