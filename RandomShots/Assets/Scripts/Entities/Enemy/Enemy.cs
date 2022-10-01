@@ -34,7 +34,7 @@ public class Enemy : Actor, IDamageable
     public Transform target;
     public Transform pointToShoot;
 
-    public GameObject bulletPrefab;
+    public UnityEngine.GameObject bulletPrefab;
 
     private bool ISee;
     private bool IsFollow;
@@ -191,7 +191,7 @@ public class Enemy : Actor, IDamageable
     private void Shoot()
     {
         myAnimator.SetBool("ISee", true);
-        GameObject bullet = Instantiate(bulletPrefab);
+        UnityEngine.GameObject bullet = Instantiate(bulletPrefab);
 
         bullet.transform.position = pointToShoot.transform.position;
         bullet.transform.rotation = pointToShoot.transform.rotation;

@@ -6,9 +6,9 @@ using UnityEngine;
 
 interface ICola
 {
-    void Acolar(GameObject x);
+    void Acolar(UnityEngine.GameObject x);
     void Desacolar();
-    GameObject Primero();
+    UnityEngine.GameObject Primero();
     bool ColaVacia();
     void Inicializarcola(int maximo);
 }

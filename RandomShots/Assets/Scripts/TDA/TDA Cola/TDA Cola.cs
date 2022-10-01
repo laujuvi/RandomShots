@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Cola : ICola
 {
-    GameObject[] bullets;
+    UnityEngine.GameObject[] bullets;
     //int[] a; // arreglo en donde se guarda la informacion
     int indice; // variable
-    public void Acolar(GameObject x)
+    public void Acolar(UnityEngine.GameObject x)
     {
         for (int i = indice - 1; i >= 0; i--)
         {
@@ -32,11 +32,11 @@ public class Cola : ICola
 
     public void Inicializarcola(int Maximo)
     {
-        bullets = new GameObject[Maximo];
+        bullets = new UnityEngine.GameObject[Maximo];
         indice = 0;
     }
 
-    public GameObject Primero()
+    public UnityEngine.GameObject Primero()
     {
         return bullets[indice-1];
     }
