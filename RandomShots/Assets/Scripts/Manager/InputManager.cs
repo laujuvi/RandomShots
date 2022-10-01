@@ -15,8 +15,9 @@ public class InputManager : MonoBehaviour
     // BINDING KEYS - ACTIONS
     [SerializeField] private KeyCode _attack = KeyCode.Mouse0;
     [SerializeField] private KeyCode _reload = KeyCode.R;
+    [SerializeField] private KeyCode _jump = KeyCode.Space;
 
-    [SerializeField] private KeyCode _moveForward = KeyCode.W;
+    //[SerializeField] private KeyCode _moveForward = KeyCode.W;
     [SerializeField] private KeyCode _moveBack = KeyCode.S;
     [SerializeField] private KeyCode _moveLeft = KeyCode.A;
     [SerializeField] private KeyCode _moveRight = KeyCode.D;
@@ -33,8 +34,10 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetKeyDown(_attack)) _character.Attack();
         if (Input.GetKeyDown(_reload)) _character.Reload();
+        if (Input.GetKeyDown(_jump)) _character.Jump();
 
-        if (Input.GetKey(_moveForward)) _character.MoveForward();
+
+        //  if (Input.GetKey(_moveForward)) _character.MoveForward();
         if (Input.GetKey(_moveBack)) _character.MoveBack();
         if (Input.GetKey(_moveLeft)) _character.MoveLeft();
         if (Input.GetKey(_moveRight)) _character.MoveRight();

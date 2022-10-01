@@ -9,6 +9,9 @@ public class ActorStats : ScriptableObject
 
     public int MaxLife => _stats.MaxLife;
     public float MovementSpeed => _stats.MovementSpeed;
+
+    public float JumpForce => _stats.JumpForce;
+
 }
 
 [System.Serializable]
@@ -16,4 +19,6 @@ public struct Stats
 {
     public int MaxLife;
     public float MovementSpeed;
+    public float JumpForce;
+
 }

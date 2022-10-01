@@ -7,11 +7,15 @@ public class Character : Actor
     [SerializeField] private List<Gun> _gunPrefabs;
     [SerializeField] private Gun _gun;
 
+    [SerializeField] private float _jumpForce;
+    [SerializeField] private Rigidbody2D _playerBody;
+
     /* COMMAND LIST */
     private CmdMove _cmdMoveForward;
     private CmdMove _cmdMoveBack;
     private CmdMove _cmdMoveLeft;
     private CmdMove _cmdMoveRight;
+    private CmdJump _cmdMoveJump;
     private CmdAttack _cmdAttack;
 
     private void Start()
@@ -19,14 +23,17 @@ public class Character : Actor
         ChangeWeapon(0);
 
         var mc = GetComponent<MovementController>();
-       // _cmdMoveForward = new CmdMove(mc, Vector3.forward);
-       // _cmdMoveBack = new CmdMove(mc, -Vector3.forward);
+
         _cmdMoveLeft = new CmdMove(mc, Vector2.left);
         _cmdMoveRight = new CmdMove(mc, Vector2.right);
+        _cmdMoveJump = new CmdJump(mc, Vector2.up, _playerBody, _jumpForce);
+
     }
 
     public void Attack() => GameManager.instance.AddEventQueue(_cmdAttack);
     public void Reload() => _gun?.Reload();
+    public void Jump() => GameManager.instance.AddEventQueue(_cmdMoveJump);
+
     public void MoveForward() => GameManager.instance.AddEventQueue(_cmdMoveForward);
     public void MoveBack() => GameManager.instance.AddEventQueue(_cmdMoveBack);
     public void MoveLeft() => GameManager.instance.AddEventQueue(_cmdMoveLeft);
