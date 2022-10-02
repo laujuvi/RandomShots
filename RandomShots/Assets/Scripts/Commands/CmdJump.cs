@@ -5,7 +5,7 @@ using UnityEngine;
 public class CmdJump : ICommand
 {
     private MovementController _movementController;
-    private Vector3 _direction;
+    private Vector2 _direction;
     private Rigidbody2D _playerBody;
     private float _jumpForce;
 

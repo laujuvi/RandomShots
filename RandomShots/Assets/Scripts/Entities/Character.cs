@@ -17,15 +17,14 @@ public class Character : Actor
 
 
     /* COMMAND LIST */
-    private CmdMove _cmdMoveForward;
-    private CmdMove _cmdMoveBack;
+
     private CmdMove _cmdMoveLeft;
     private CmdMove _cmdMoveRight;
     private CmdJump _cmdMoveJump;
     private CmdAttack _cmdAttack;
 
     private bool isPlayerLeft = false;
-
+    public bool IsPLayerLeft => isPlayerLeft;
 
     private void Start()
     {
@@ -49,8 +48,6 @@ public class Character : Actor
         }
     }
 
-    public void MoveForward() => GameManager.instance.AddEventQueue(_cmdMoveForward);
-    public void MoveBack() => GameManager.instance.AddEventQueue(_cmdMoveBack);
     public void MoveLeft() {
 
         if (!isPlayerLeft)
@@ -76,6 +73,7 @@ public class Character : Actor
     {
 
         _gun = Instantiate(_gunPrefabs[index], _weaponTransform.position, _weaponTransform.rotation, transform);
+        _gun.SetOwner(this);
         _gun.Reload();
         _cmdAttack = new CmdAttack(_gun);
     }

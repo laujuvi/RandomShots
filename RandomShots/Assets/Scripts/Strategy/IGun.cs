@@ -7,6 +7,7 @@ public interface IGun : IWeapon
     GunStats Stats { get; }
     GameObject BulletPrefab { get; }
     int MagSize { get; }
+    bool IsPlayerLeft { get; }
 
     void Reload();
 }

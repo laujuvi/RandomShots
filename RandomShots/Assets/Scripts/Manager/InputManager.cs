@@ -31,14 +31,14 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(_weapon1)) _character.ChangeWeapon(0);
         if (Input.GetKeyDown(_weapon2)) _character.ChangeWeapon(1);
+        if (Input.GetKeyDown(_weapon3)) _character.ChangeWeapon(2);
+
 
         if (Input.GetKeyDown(_attack)) _character.Attack();
         if (Input.GetKeyDown(_reload)) _character.Reload();
         if (Input.GetKeyDown(_jump)) _character.Jump();
 
 
-        //  if (Input.GetKey(_moveForward)) _character.MoveForward();
-        if (Input.GetKey(_moveBack)) _character.MoveBack();
         if (Input.GetKey(_moveLeft)) _character.MoveLeft();
         if (Input.GetKey(_moveRight)) _character.MoveRight();
     }

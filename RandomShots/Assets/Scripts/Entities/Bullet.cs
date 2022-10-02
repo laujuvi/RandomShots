@@ -15,9 +15,17 @@ public class Bullet : MonoBehaviour, IBullet
     public float Speed => Owner.Stats.BulletSpeed;
     public int Damage => Owner.Stats.BulletDamage;
     public float LifeTime => Owner.Stats.BulletLifeTime;
+    private float _travelDirection;
     private float _currentLifeTime;
 
-    public void Travel() => transform.position += Vector3.forward * Time.deltaTime * Speed;
+    //public void Travel() => transform.position += Vector3.forward * Time.deltaTime * Speed;
+
+    //public void Travel() => transform.position += Vector3.right * Time.deltaTime * Speed;
+
+    public void Travel() {
+        //Debug.Log(transform.rotation);
+        transform.position += Vector3.right * Time.deltaTime * Speed * _travelDirection;
+    } 
 
     public void OnTriggerEnter(Collider collider)
     {
@@ -45,6 +53,7 @@ public class Bullet : MonoBehaviour, IBullet
         _rigidbody.useGravity = false;
         _rigidbody.isKinematic = true;
         _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        _travelDirection = _owner.IsPlayerLeft ? -1 : 1;
     }
 
     void Update()
