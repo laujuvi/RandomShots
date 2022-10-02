@@ -144,8 +144,12 @@ MonoBehaviour:
   - {fileID: 714258807415988530, guid: 135756702e3733e4aaf0963e9db180b7, type: 3}
   - {fileID: 4651560250207634571, guid: 412aa7edd9d1b4f429c71c21998d4369, type: 3}
   _gun: {fileID: 7021630200986467050, guid: c34917e45f756794298cd9eced7a5acf, type: 3}
-  _jumpForce: 2
+  _platformLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _jumpForce: 8
   _playerBody: {fileID: 99056212}
+  _boxCollider2D: {fileID: 99056213}
 --- !u!114 &99056208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +199,7 @@ Rigidbody2D:
   m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 1
-  m_GravityScale: 1
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -239,7 +243,7 @@ GameObject:
   - component: {fileID: 189994604}
   - component: {fileID: 189994606}
   - component: {fileID: 189994607}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

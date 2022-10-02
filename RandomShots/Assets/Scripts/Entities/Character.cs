@@ -7,8 +7,11 @@ public class Character : Actor
     [SerializeField] private List<Gun> _gunPrefabs;
     [SerializeField] private Gun _gun;
 
+    [SerializeField] private LayerMask _platformLayerMask;
+
     [SerializeField] private float _jumpForce;
     [SerializeField] private Rigidbody2D _playerBody;
+    [SerializeField] private BoxCollider2D _boxCollider2D;
 
     /* COMMAND LIST */
     private CmdMove _cmdMoveForward;
@@ -32,7 +35,13 @@ public class Character : Actor
 
     public void Attack() => GameManager.instance.AddEventQueue(_cmdAttack);
     public void Reload() => _gun?.Reload();
-    public void Jump() => GameManager.instance.AddEventQueue(_cmdMoveJump);
+    public void Jump()
+    {
+        if (IsGrounded())
+        {
+            GameManager.instance.AddEventQueue(_cmdMoveJump);
+        }
+    }
 
     public void MoveForward() => GameManager.instance.AddEventQueue(_cmdMoveForward);
     public void MoveBack() => GameManager.instance.AddEventQueue(_cmdMoveBack);
@@ -47,6 +56,33 @@ public class Character : Actor
         _gun.Reload();
         _cmdAttack = new CmdAttack(_gun);
     }
+
+    private void Update()
+    {
+        IsGrounded();
+    }
+    private bool IsGrounded()
+    {
+        RaycastHit2D raycastHit = Physics2D.BoxCast(_boxCollider2D.bounds.center, _boxCollider2D.bounds.size , 0f, Vector2.down, 0.1f, _platformLayerMask);
+
+        Color rayColor;
+        if (raycastHit.collider != null)
+        {
+            rayColor = Color.green;
+        } else
+        {
+            rayColor = Color.red;
+        }
+
+        Debug.DrawRay(_boxCollider2D.bounds.center + new Vector3(_boxCollider2D.bounds.extents.x, 0), Vector2.down * (_boxCollider2D.bounds.extents.y + 0.1f), rayColor);
+        Debug.DrawRay(_boxCollider2D.bounds.center - new Vector3(_boxCollider2D.bounds.extents.x, 0), Vector2.down * (_boxCollider2D.bounds.extents.y + 0.1f), rayColor);
+        Debug.DrawRay(_boxCollider2D.bounds.center - new Vector3(_boxCollider2D.bounds.extents.x, _boxCollider2D.bounds.extents.y + 0.1f), Vector2.right * (_boxCollider2D.bounds.extents.x), rayColor);
+
+
+        Debug.Log(raycastHit.collider);
+        return raycastHit.collider != null; 
+    }
+
 }
 
 /*
