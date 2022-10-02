@@ -26,10 +26,6 @@ public class Character : Actor
 
     private bool isPlayerLeft = false;
 
-    private bool isPlayerMoveLeft = false;
-
-
-    private Vector3 _playerDirection;
 
     private void Start()
     {
@@ -78,8 +74,7 @@ public class Character : Actor
 
     public void ChangeWeapon(int index)
     {
-       // Destroy(_gun?.gameObject);
-       // DestroyImmediate(_gun?.gameObject, true);
+
         _gun = Instantiate(_gunPrefabs[index], _weaponTransform.position, _weaponTransform.rotation, transform);
         _gun.Reload();
         _cmdAttack = new CmdAttack(_gun);
@@ -115,18 +110,6 @@ public class Character : Actor
     private void PlayerFlip()
     {
 
-        //Debug.Log(isPlayerLeft);
-
-        //if (isPlayerLeft)
-        //{
-        //_playerTransform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        //    transform.localScale = _playerTransform.localScale;
-        //} else
-        //{
-        //    _playerTransform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        //    transform.localScale = _playerTransform.localScale;
-        //}
-
         Vector3 currentScale = gameObject.transform.localScale;
         currentScale.x *= -1;
         gameObject.transform.localScale = currentScale;
@@ -135,12 +118,3 @@ public class Character : Actor
     }
 
 }
-
-/*
-
-    - interfaz: iCommand
-    - comando concreto: AttackCommand
-    - invoker: new command, command.execute
-    - receptor: ejecuta la orden
- 
-*/
