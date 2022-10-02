@@ -5,13 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider), typeof(Rigidbody))]
 public class Bullet : MonoBehaviour, IBullet
 {
-    #region PRIVATE_PROPERTIES
     private Rigidbody _rigidbody;
     private Collider _collider;
     [SerializeField] private List<int> _layerMasks;
-    #endregion
 
-    #region I_BULLET_PROPERTIES
     public IGun Owner => _owner;
     private IGun _owner;
 
@@ -19,9 +16,7 @@ public class Bullet : MonoBehaviour, IBullet
     public int Damage => Owner.Stats.BulletDamage;
     public float LifeTime => Owner.Stats.BulletLifeTime;
     private float _currentLifeTime;
-    #endregion
 
-    #region I_BULLET_METHODS
     public void Travel() => transform.position += Vector3.forward * Time.deltaTime * Speed;
 
     public void OnTriggerEnter(Collider collider)
@@ -34,11 +29,14 @@ public class Bullet : MonoBehaviour, IBullet
             Destroy(this.gameObject);
         }
     }
-    #endregion
 
-    #region UNITY_EVENTS
     void Start()
     {
+        Debug.Log(_owner.Stats.BulletSpeed);
+        Debug.Log(_owner.Stats.BulletLifeTime);
+        Debug.Log(_owner.Stats.BulletDamage);
+
+
         _currentLifeTime = LifeTime;
         _collider = GetComponent<Collider>();
         _rigidbody = GetComponent<Rigidbody>();
@@ -56,7 +54,6 @@ public class Bullet : MonoBehaviour, IBullet
 
         Travel();
     }
-    #endregion
 
     public void SetOwner(IGun gun) => _owner = gun;
 }

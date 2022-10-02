@@ -16,7 +16,7 @@ public class MovementController : MonoBehaviour
     
     //public float jumpForce => _stats.JumpForce;
 
-    public void Move(Vector3 direction) => transform.Translate(direction * Time.deltaTime * Speed);
+    public void Move(Vector2 direction) => transform.Translate(direction * Time.deltaTime * Speed);
 
     public void Jump(Rigidbody2D playerBody, float jumpForce, Vector2 direction) => playerBody.AddForce(direction * jumpForce, ForceMode2D.Impulse);
 

@@ -17,7 +17,7 @@ public class Gun : MonoBehaviour, IGun
         if (_currentBulletCount <= 0) return;
         _currentBulletCount--;
 
-        var bullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+        var bullet = Instantiate(BulletPrefab, transform.position, transform.rotation);
         bullet.GetComponent<Bullet>().SetOwner(this);
     }
 

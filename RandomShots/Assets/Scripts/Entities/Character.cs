@@ -12,6 +12,9 @@ public class Character : Actor
     [SerializeField] private float _jumpForce;
     [SerializeField] private Rigidbody2D _playerBody;
     [SerializeField] private BoxCollider2D _boxCollider2D;
+    [SerializeField] private Transform _weaponTransform;
+    [SerializeField] private Transform _playerTransform;
+
 
     /* COMMAND LIST */
     private CmdMove _cmdMoveForward;
@@ -20,6 +23,13 @@ public class Character : Actor
     private CmdMove _cmdMoveRight;
     private CmdJump _cmdMoveJump;
     private CmdAttack _cmdAttack;
+
+    private bool isPlayerLeft = false;
+
+    private bool isPlayerMoveLeft = false;
+
+
+    private Vector3 _playerDirection;
 
     private void Start()
     {
@@ -45,14 +55,32 @@ public class Character : Actor
 
     public void MoveForward() => GameManager.instance.AddEventQueue(_cmdMoveForward);
     public void MoveBack() => GameManager.instance.AddEventQueue(_cmdMoveBack);
-    public void MoveLeft() => GameManager.instance.AddEventQueue(_cmdMoveLeft);
-    public void MoveRight() => GameManager.instance.AddEventQueue(_cmdMoveRight);
+    public void MoveLeft() {
+
+        if (!isPlayerLeft)
+        {
+            PlayerFlip();
+        }
+        GameManager.instance.AddEventQueue(_cmdMoveLeft);
+
+
+
+    }
+    public void MoveRight() {
+
+        if (isPlayerLeft)
+        {
+            PlayerFlip();
+        }
+        GameManager.instance.AddEventQueue(_cmdMoveRight);
+
+    }
 
     public void ChangeWeapon(int index)
     {
        // Destroy(_gun?.gameObject);
        // DestroyImmediate(_gun?.gameObject, true);
-        _gun = Instantiate(_gunPrefabs[index], transform);
+        _gun = Instantiate(_gunPrefabs[index], _weaponTransform.position, _weaponTransform.rotation, transform);
         _gun.Reload();
         _cmdAttack = new CmdAttack(_gun);
     }
@@ -60,6 +88,7 @@ public class Character : Actor
     private void Update()
     {
         IsGrounded();
+        //PlayerFlip();
     }
     private bool IsGrounded()
     {
@@ -79,8 +108,30 @@ public class Character : Actor
         Debug.DrawRay(_boxCollider2D.bounds.center - new Vector3(_boxCollider2D.bounds.extents.x, _boxCollider2D.bounds.extents.y + 0.1f), Vector2.right * (_boxCollider2D.bounds.extents.x), rayColor);
 
 
-        Debug.Log(raycastHit.collider);
+        //Debug.Log(raycastHit.collider);
         return raycastHit.collider != null; 
+    }
+
+    private void PlayerFlip()
+    {
+
+        //Debug.Log(isPlayerLeft);
+
+        //if (isPlayerLeft)
+        //{
+        //_playerTransform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        //    transform.localScale = _playerTransform.localScale;
+        //} else
+        //{
+        //    _playerTransform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        //    transform.localScale = _playerTransform.localScale;
+        //}
+
+        Vector3 currentScale = gameObject.transform.localScale;
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale;
+
+        isPlayerLeft = !isPlayerLeft;
     }
 
 }
