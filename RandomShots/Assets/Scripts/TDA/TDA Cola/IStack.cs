@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IPila
+public interface IStack
 {
-    void InicializarPila(int maximo);
+    void Init(int maximo);
 
     // siempre que la pila este inicializada
-    void Apilar(GameObject x);
+    void Stack(GameObject x);
     // siempre que la pila este inicializada y no este vacıa
-    void Desapilar();
+    void Unstack();
 
     // siempre que la pila este inicializada
-    bool PilaVacia();
+    bool Clear();
     // siempre que la pila este inicializada y no este vacıa
-    GameObject Tope();
+    GameObject Top();
 
 }

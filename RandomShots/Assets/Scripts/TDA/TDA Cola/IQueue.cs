@@ -4,13 +4,13 @@ using System.Text;
 using UnityEngine;
 
 
-interface ICola
+interface IQueue
 {
-    void Acolar(UnityEngine.GameObject x);
-    void Desacolar();
-    UnityEngine.GameObject Primero();
-    bool ColaVacia();
-    void Inicializarcola(int maximo);
+    void Queue(UnityEngine.GameObject x);
+    void Dequeue();
+    UnityEngine.GameObject First();
+    bool Clear();
+    void Init(int maximo);
 }
 
 //vAcolar: permite agregar un elemento a la estructura. Se supone que la cola está inicializada.

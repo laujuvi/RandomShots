@@ -5,11 +5,11 @@ using UnityEngine;
 public class playerTemp :MonoBehaviour
 {
     public float speed;
-    private Cola cola;
-    public int maximo;
+    private TDAQueue queue;
+    public int max;
     public int currentBullets;
     public int currentGuns;
-    public TDAPila pila;
+    public TDAStack stack;
 
     private int i;
     [SerializeField] private Gun gun;
@@ -20,14 +20,14 @@ public class playerTemp :MonoBehaviour
     private CmdAttack _cmdAttack;
     private void Awake()
     {
-        cola = new Cola();
-        pila = new TDAPila();
+        queue = new TDAQueue();
+        stack = new TDAStack();
        
     }
     void Start()
     {
-        cola.Inicializarcola(maximo);
-        pila.InicializarPila(maximo);
+        queue.Init(max);
+        stack.Init(max);
 
 
         var mc = GetComponent<MovementController>();
@@ -60,7 +60,7 @@ public class playerTemp :MonoBehaviour
       
          if (Input.GetKeyDown(KeyCode.P))
          { 
-            cola.Desacolar();
+            queue.Dequeue();
            // cola.ImprimoCola();
          }
 
@@ -70,9 +70,9 @@ public class playerTemp :MonoBehaviour
         if(collision.gameObject.CompareTag("Bullets"))
         {
             
-            if (currentBullets < maximo)
+            if (currentBullets < max)
             {
-                cola.Acolar(collision.gameObject);
+                queue.Queue(collision.gameObject);
                 currentBullets++;
                 collision.gameObject.SetActive(false);
                 
@@ -81,9 +81,9 @@ public class playerTemp :MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Guns"))
         {
-            if (currentGuns< maximo)
+            if (currentGuns< max)
             {
-                pila.Apilar(collision.gameObject);
+                stack.Stack(collision.gameObject);
                 currentGuns ++;
                 collision.gameObject.SetActive(false);
             }

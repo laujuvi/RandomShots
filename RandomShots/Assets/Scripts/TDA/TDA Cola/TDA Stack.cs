@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TDAPila : IPila
+public class TDAStack : IStack
 {
     GameObject [] GunsStack; // arreglo en donde se guarda la informacion
     int indice; // variable
@@ -10,35 +10,35 @@ public class TDAPila : IPila
     [SerializeField] private Gun gun;
     [SerializeField] private List<Gun> _gunPrefabs;
 
-    public void Apilar(GameObject x)
+    public void Stack(GameObject x)
     {
         GunsStack[indice] = x;
         indice++;
     }
 
-    public void Desapilar()
+    public void Unstack()
     {
         
         indice--;
         
     }
 
-    public void InicializarPila(int Maximo)
+    public void Init(int Maximo)
     {
         GunsStack = new GameObject[Maximo];
         indice = 0;
     }
 
-    public bool PilaVacia()
+    public bool Clear()
     {
         return (indice == 0);
     }
 
-    public GameObject Tope()
+    public GameObject Top()
     {
         return GunsStack[indice - 1];
     }
-    public void imprimoPila()
+    public void Print()
     {
         for (int i = indice - 1; i >= 0; i--)
         {
