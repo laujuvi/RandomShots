@@ -4,28 +4,30 @@ using UnityEngine;
 
 public class TDAPila : IPila
 {
-    GameObject [] GunsStack; // arreglo en donde se guarda la informacion
+    int [] GunsStack; // arreglo en donde se guarda la informacion
     int indice; // variable
 
-    [SerializeField] private Gun gun;
+    //[SerializeField] private Gun gun;
     [SerializeField] private List<Gun> _gunPrefabs;
 
-    public void Apilar(GameObject x)
+    public void Apilar(int x)
     {
+        Debug.Log("APILAR");
         GunsStack[indice] = x;
         indice++;
     }
 
     public void Desapilar()
     {
-        
+        Debug.Log("DESAPILAR");
         indice--;
         
     }
 
     public void InicializarPila(int Maximo)
     {
-        GunsStack = new GameObject[Maximo];
+        Debug.Log("INICIALIZAR PILA");
+        GunsStack = new int[Maximo];
         indice = 0;
     }
 
@@ -34,15 +36,17 @@ public class TDAPila : IPila
         return (indice == 0);
     }
 
-    public GameObject Tope()
+    public int Tope()
     {
+        Debug.Log("TOPE "+ GunsStack[indice-1]);
         return GunsStack[indice - 1];
     }
-    public void imprimoPila()
+    public void ImprimoPila()
     {
-        for (int i = indice - 1; i >= 0; i--)
+        for (int i = indice; i >= 0; i--)
         {
-            Debug.Log(GunsStack[i].name);
+
+            Debug.Log(GunsStack[i]);
         }
     }
 

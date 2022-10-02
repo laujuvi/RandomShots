@@ -5,7 +5,8 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     // ENTITIES / CONTROLLERS
-    private Character _character;
+    private playerTemp playerTemp;
+    //private playerTemp playerTemp;
 
     // BINDING KEYS - WEAPONS
     [SerializeField] private KeyCode _weapon1 = KeyCode.Alpha1;
@@ -23,20 +24,20 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        _character = GetComponent<Character>();
+        playerTemp = GetComponent<playerTemp>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(_weapon1)) _character.ChangeWeapon(0);
-        if (Input.GetKeyDown(_weapon2)) _character.ChangeWeapon(1);
+        //if (Input.GetKeyDown(_weapon1)) playerTemp.ChangeWeapon(0);
+        //if (Input.GetKeyDown(_weapon2)) playerTemp.ChangeWeapon(1);
 
-        if (Input.GetKeyDown(_attack)) _character.Attack();
-        if (Input.GetKeyDown(_reload)) _character.Reload();
+        if (Input.GetKeyDown(_attack)) playerTemp.Attack();
+        if (Input.GetKeyDown(_reload)) playerTemp.Reload();
 
-        if (Input.GetKey(_moveForward)) _character.MoveForward();
-        if (Input.GetKey(_moveBack)) _character.MoveBack();
-        if (Input.GetKey(_moveLeft)) _character.MoveLeft();
-        if (Input.GetKey(_moveRight)) _character.MoveRight();
+        if (Input.GetKey(_moveForward)) playerTemp.MoveForward();
+        if (Input.GetKey(_moveBack)) playerTemp.MoveBack();
+        if (Input.GetKey(_moveLeft)) playerTemp.MoveLeft();
+        if (Input.GetKey(_moveRight)) playerTemp.MoveRight();
     }
 }
