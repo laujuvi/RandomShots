@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
 {
     // ENTITIES / CONTROLLERS
     private Character _character;
+    [SerializeField] private Animator _animator;
 
     // BINDING KEYS - WEAPONS
     [SerializeField] private KeyCode _weapon1 = KeyCode.Alpha1;
@@ -25,10 +26,13 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         _character = GetComponent<Character>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        _animator.SetFloat("XDirection", 0);
+        _animator.SetFloat("Shoot", 0);
         if (Input.GetKeyDown(_weapon1)) _character.ChangeWeapon(0);
         if (Input.GetKeyDown(_weapon2)) _character.ChangeWeapon(1);
         if (Input.GetKeyDown(_weapon3)) _character.ChangeWeapon(2);
@@ -36,10 +40,10 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetKeyDown(_attack)) _character.Attack();
         if (Input.GetKeyDown(_reload)) _character.Reload();
-        if (Input.GetKeyDown(_jump)) _character.Jump();
+        if (Input.GetKeyDown(_jump)) _character.Jump(); _animator.SetFloat("Shoot", 1);
 
 
-        if (Input.GetKey(_moveLeft)) _character.MoveLeft();
-        if (Input.GetKey(_moveRight)) _character.MoveRight();
+        if (Input.GetKey(_moveLeft)) _character.MoveLeft(); _animator.SetFloat("XDirection", -1);
+        if (Input.GetKey(_moveRight)) _character.MoveRight(); _animator.SetFloat("XDirection", 1);
     }
 }

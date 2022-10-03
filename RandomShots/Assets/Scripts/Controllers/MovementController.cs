@@ -10,8 +10,8 @@ public class MovementController : MonoBehaviour
     //[SerializeField] private float _jumpForce;
 
     //[SerializeField] private Rigidbody2D _playerBody;
-      
 
+   
     public float Speed => _stats.MovementSpeed;
     
     //public float jumpForce => _stats.JumpForce;

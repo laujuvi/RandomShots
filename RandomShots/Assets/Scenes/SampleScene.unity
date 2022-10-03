@@ -150,6 +150,8 @@ MonoBehaviour:
   _jumpForce: 8
   _playerBody: {fileID: 99056212}
   _boxCollider2D: {fileID: 99056213}
+  _weaponTransform: {fileID: 0}
+  _playerTransform: {fileID: 0}
 --- !u!114 &99056208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e646fe2dbe441a744bcb06dfdf60459b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 99056220}
   _weapon1: 49
   _weapon2: 50
   _weapon3: 51
@@ -231,6 +234,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.8}
   m_EdgeRadius: 0
+--- !u!95 &99056220
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99056202}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e8d1c6b62463ca340a8dde1bd5b42b87, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &189994603
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +394,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 99056209, guid: 988273f2c10a1e84197710376762ea8a, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 99056220}
     - target: {fileID: 2054876827144050076, guid: 988273f2c10a1e84197710376762ea8a, type: 3}
       propertyPath: m_Name
       value: Player
