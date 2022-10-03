@@ -15,6 +15,7 @@ public class Character : Actor
     [SerializeField] private Transform _weaponTransform;
     [SerializeField] private Transform _playerTransform;
 
+    [SerializeField] private Animator _animator;
 
     /* COMMAND LIST */
 
@@ -28,6 +29,8 @@ public class Character : Actor
 
     private void Start()
     {
+        _animator = GetComponent<Animator>();
+
         ChangeWeapon(0);
 
         var mc = GetComponent<MovementController>();

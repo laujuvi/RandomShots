@@ -40,10 +40,20 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetKeyDown(_attack)) _character.Attack();
         if (Input.GetKeyDown(_reload)) _character.Reload();
-        if (Input.GetKeyDown(_jump)) _character.Jump(); _animator.SetFloat("Shoot", 1);
+
+        if (Input.GetKeyDown(_jump)) {
+            _character.Jump();
+            _animator.SetFloat("Shoot", 1);
+        }
 
 
-        if (Input.GetKey(_moveLeft)) _character.MoveLeft(); _animator.SetFloat("XDirection", -1);
-        if (Input.GetKey(_moveRight)) _character.MoveRight(); _animator.SetFloat("XDirection", 1);
+        if (Input.GetKey(_moveLeft)) {
+            _character.MoveLeft();
+            _animator.SetFloat("XDirection", -1);
+        }
+        if (Input.GetKey(_moveRight)) {
+            _character.MoveRight();
+            _animator.SetFloat("XDirection", 1);
+        }  
     }
 }
