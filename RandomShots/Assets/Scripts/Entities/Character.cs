@@ -45,6 +45,8 @@ public class Character : Actor
     public void Reload() => _gun?.Reload();
     public void Jump()
     {
+        _animator.SetFloat("Shoot", 1);
+
         if (IsGrounded())
         {
             GameManager.instance.AddEventQueue(_cmdMoveJump);
@@ -56,6 +58,7 @@ public class Character : Actor
         if (!isPlayerLeft)
         {
             PlayerFlip();
+            _animator.SetFloat("XDirection", 1);
         }
         GameManager.instance.AddEventQueue(_cmdMoveLeft);
 
@@ -67,6 +70,8 @@ public class Character : Actor
         if (isPlayerLeft)
         {
             PlayerFlip();
+            _animator.SetFloat("XDirection", -1);
+
         }
         GameManager.instance.AddEventQueue(_cmdMoveRight);
 
@@ -83,6 +88,8 @@ public class Character : Actor
 
     private void Update()
     {
+        _animator.SetFloat("XDirection", 0);
+        _animator.SetFloat("Shoot", 0);
         IsGrounded();
         //PlayerFlip();
     }
