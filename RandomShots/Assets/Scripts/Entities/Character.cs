@@ -91,7 +91,6 @@ public class Character : Actor
         _animator.SetFloat("XDirection", 0);
         _animator.SetFloat("Shoot", 0);
         IsGrounded();
-        //PlayerFlip();
     }
     private bool IsGrounded()
     {
