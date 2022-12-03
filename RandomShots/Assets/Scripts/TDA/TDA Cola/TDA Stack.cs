@@ -5,42 +5,42 @@ using UnityEngine;
 public class TDAStack : IStack
 {
     GameObject [] GunsStack; // arreglo en donde se guarda la informacion
-    int indice; // variable
+    int index; // variable
 
     [SerializeField] private Gun gun;
     [SerializeField] private List<Gun> _gunPrefabs;
 
     public void Stack(GameObject x)
     {
-        GunsStack[indice] = x;
-        indice++;
+        GunsStack[index] = x;
+        index++;
     }
 
     public void Unstack()
     {
         
-        indice--;
+        index--;
         
     }
 
     public void Init(int Maximo)
     {
         GunsStack = new GameObject[Maximo];
-        indice = 0;
+        index = 0;
     }
 
     public bool Clear()
     {
-        return (indice == 0);
+        return (index == 0);
     }
 
     public GameObject Top()
     {
-        return GunsStack[indice - 1];
+        return GunsStack[index - 1];
     }
     public void Print()
     {
-        for (int i = indice - 1; i >= 0; i--)
+        for (int i = index - 1; i >= 0; i--)
         {
             Debug.Log(GunsStack[i].name);
         }
