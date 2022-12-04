@@ -42,10 +42,13 @@ public class Character : Actor
     public void Reload() => _gun?.Reload();
     public void Jump()
     {
-        if (IsGrounded())
-        {
-            GameManager.instance.AddEventQueue(_cmdMoveJump);
-        }
+
+        GameManager.instance.AddEventQueue(_cmdMoveJump);
+
+        //if (IsGrounded())
+        //{
+        //    GameManager.instance.AddEventQueue(_cmdMoveJump);
+        //}
     }
 
     public void MoveLeft() {
