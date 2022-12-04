@@ -15,6 +15,10 @@ public class Character : Actor
     [SerializeField] private Transform _weaponTransform;
     [SerializeField] private Transform _playerTransform;
 
+    [SerializeField] private int _maxStack;
+    [SerializeField] private int _maxQueue;
+
+
 
     /* COMMAND LIST */
 
@@ -22,6 +26,10 @@ public class Character : Actor
     private CmdMove _cmdMoveRight;
     private CmdJump _cmdMoveJump;
     private CmdAttack _cmdAttack;
+
+    private TDAStack<Gun> _tdaStack;
+    private TDAQueue<Ammo> _tdaQueue;
+    private Collider2D _lastCollider;
 
     private bool isPlayerLeft = false;
     public bool IsPLayerLeft => isPlayerLeft;
@@ -36,6 +44,54 @@ public class Character : Actor
         _cmdMoveRight = new CmdMove(mc, Vector2.right);
         _cmdMoveJump = new CmdJump(mc, Vector2.up, _playerBody, _jumpForce);
 
+        _tdaStack = new TDAStack<Gun>(_maxStack);
+        _tdaQueue = new TDAQueue<Ammo>(_maxQueue);
+
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (_lastCollider == collision.collider) return;
+        var queue = collision.collider.gameObject.GetComponent<Ammo>();
+        var stack = collision.collider.gameObject.GetComponent<Gun>();
+
+        if (queue != null)
+        {
+            //if (_tdaQueue.Length >= _maxQueue)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+                Debug.Log("Colision con queue Ammo");
+                PickUpQueue(queue);
+                Debug.Log(_tdaQueue.First());
+                //PickUpStack(stack);   
+            //}
+        }
+
+        if (stack != null)
+        {
+            //if (_tdaStack.Length > _maxStack)
+            //{
+            //    return;
+            //} else
+            //{
+                Debug.Log("Colision con queue Gun");
+                Debug.Log(PickUpStack(stack));
+                //PickUpStack(stack);   
+            //}
+
+
+        }
+
+        _lastCollider = collision.collider;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider == _lastCollider) _lastCollider = null;
     }
 
     public void Attack() => GameManager.instance.AddEventQueue(_cmdAttack);
@@ -72,6 +128,19 @@ public class Character : Actor
 
     }
 
+    public Gun PickUpStack(Gun gun)
+    {
+        _tdaStack.Stack(gun);
+
+        return _tdaStack.Top();
+    }
+
+    public Ammo PickUpQueue(Ammo ammo)
+    {
+        _tdaQueue.Queue(ammo);
+        return _tdaQueue.First();
+    }
+
     public void ChangeWeapon(int index)
     {
 
@@ -84,6 +153,19 @@ public class Character : Actor
     private void Update()
     {
         IsGrounded();
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            _tdaQueue.Dequeue();
+            Debug.Log(_tdaQueue.Length);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            _tdaStack.Unstack();
+            Debug.Log(_tdaStack.Length);
+        }
+
         //PlayerFlip();
     }
     private bool IsGrounded()
