@@ -19,6 +19,8 @@ public class Character : Actor
 
     [SerializeField] private Bullet _defaultBullet;
 
+    [SerializeField] private LifeController lifeController;
+
     /* COMMAND LIST */
 
     private CmdMove _cmdMoveLeft;
@@ -36,7 +38,7 @@ public class Character : Actor
     private void Start()
     {
         //ChangeWeapon(0);
-
+        lifeController.InitializateLife();
         var mc = GetComponent<MovementController>();
 
         _cmdMoveLeft = new CmdMove(mc, Vector2.left);
@@ -72,6 +74,13 @@ public class Character : Actor
         }
 
         _lastCollider = collision;
+        if (collision.gameObject.tag == "BulletEnemy")
+        {
+            Debug.Log("SADASDA");
+            BulletEnemyPower bulletEnemyPower = collision.gameObject.GetComponent<BulletEnemyPower>();
+            lifeController.GetDamage(bulletEnemyPower.damage);
+            Destroy(collision.gameObject);
+        }
     }
     //private void OnCollisionEnter2D(Collision2D collision)
     //{
@@ -102,6 +111,8 @@ public class Character : Actor
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider == _lastCollider) _lastCollider = null;
+       
+
     }
 
     public void Attack()
@@ -233,6 +244,10 @@ public class Character : Actor
     private void OutOfAmmo()
     {
         if (_tdaStack.Length > 1) ChangeWeapon();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+     
     }
 
 }
