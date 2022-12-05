@@ -10,6 +10,6 @@ public interface IBullet
     float LifeTime { get; }
 
     void Travel();
-    void OnTriggerEnter(Collider collider);
+    void OnTriggerEnter2D(Collider2D collider);
     void SetOwner(IGun gun);
 }

@@ -13,7 +13,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private KeyCode _weapon3 = KeyCode.Alpha3;
 
     // BINDING KEYS - ACTIONS
-    [SerializeField] private KeyCode _attack = KeyCode.Mouse0;
+    [SerializeField] private KeyCode _attack = KeyCode.J;
     [SerializeField] private KeyCode _reload = KeyCode.R;
     [SerializeField] private KeyCode _jump = KeyCode.Space;
 
@@ -29,9 +29,9 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(_weapon1)) _character.ChangeWeapon(0);
-        if (Input.GetKeyDown(_weapon2)) _character.ChangeWeapon(1);
-        if (Input.GetKeyDown(_weapon3)) _character.ChangeWeapon(2);
+        //if (Input.GetKeyDown(_weapon1)) _character.ChangeWeapon(0);
+        //if (Input.GetKeyDown(_weapon2)) _character.ChangeWeapon(1);
+        //if (Input.GetKeyDown(_weapon3)) _character.ChangeWeapon(2);
 
 
         if (Input.GetKeyDown(_attack)) _character.Attack();

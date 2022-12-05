@@ -19,11 +19,7 @@ public class CmdJump : ICommand
 
     }
 
-    //public void Execute() => _movementController.Move(_direction);
     public void Execute() => _movementController.Jump(_playerBody, _jumpForce, _direction);
-
-    //public void Jump( ) => _playerBody.AddForce(Vector2.up * 50000, ForceMode2D.Impulse);
-
 
     public void Undo()
     {

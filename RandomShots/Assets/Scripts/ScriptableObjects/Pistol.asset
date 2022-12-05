@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   _stasts:
-    BulletDamage: 5
-    BulletSpeed: 500
+    BulletDamage: 50
+    BulletSpeed: 10
     BulletLifeTime: 100
     Cooldown: 0.1
-    MagSize: 50
+    MagSize: 10
     BulletPrefab: {fileID: 7042838548770316483, guid: e155f3278d9ef424f98de383646635c1, type: 3}
