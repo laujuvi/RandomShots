@@ -5,16 +5,18 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D), typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour, IBullet
 {
+
     private Rigidbody2D _rigidbody;
     private Collider2D _collider;
     [SerializeField] private List<int> _layerMasks;
+    [SerializeField] public int damageBullet;
 
     public IGun Owner => _owner;
     private IGun _owner;
 
     public float Speed => Owner.Stats.BulletSpeed;
-    public int Damage => Owner.Stats.BulletDamage;
-    public float LifeTime => Owner.Stats.BulletLifeTime;
+    public int Damage => damageBullet;
+    public float LifeTime => damageBullet;
     private float _travelDirection;
     private float _currentLifeTime;
 

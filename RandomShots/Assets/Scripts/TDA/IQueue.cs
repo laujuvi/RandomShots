@@ -7,7 +7,7 @@ using UnityEngine;
 interface IQueue<T>
 {
     void Queue(T x);
-    void Dequeue();
+    T Dequeue();
     T First();
     bool Clear();
     void Init(int maximo);

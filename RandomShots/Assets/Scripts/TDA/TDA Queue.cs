@@ -10,7 +10,7 @@ public class TDAQueue<T> : IQueue<T>
     int index; // variable
     public T[] List => list;
 
-    public int Length => index + 1;
+    public int Length => index;
 
     public TDAQueue(int max)
     {
@@ -34,10 +34,12 @@ public class TDAQueue<T> : IQueue<T>
         return (index == 0);
     }
 
-    public void Dequeue()
+    public T Dequeue()
     {
-        if (index < 0) return;
+        if (index < 0) return default;
         index--;
+
+        return list[index];
     }
 
     public void Init(int max)

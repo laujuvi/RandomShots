@@ -29,9 +29,9 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(_weapon1)) _character.ChangeWeapon(0);
-        if (Input.GetKeyDown(_weapon2)) _character.ChangeWeapon(1);
-        if (Input.GetKeyDown(_weapon3)) _character.ChangeWeapon(2);
+        //if (Input.GetKeyDown(_weapon1)) _character.ChangeWeapon(0);
+        //if (Input.GetKeyDown(_weapon2)) _character.ChangeWeapon(1);
+        //if (Input.GetKeyDown(_weapon3)) _character.ChangeWeapon(2);
 
 
         if (Input.GetKeyDown(_attack)) _character.Attack();

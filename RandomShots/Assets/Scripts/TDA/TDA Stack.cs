@@ -28,9 +28,9 @@ public class TDAStack<T> : IStack<T>
 
     public T Unstack()
     {
-        if (index < 0) return default;
+        if (index <= 0) return default;
         index--;
-        return listStack[index+1];
+        return listStack[index];
 
     }
 

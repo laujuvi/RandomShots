@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IGun : IWeapon
 {
     GunStats Stats { get; }
-    GameObject BulletPrefab { get; }
+    Bullet BulletPrefab { get; }
     int MagSize { get; }
     bool IsPlayerLeft { get; }
 

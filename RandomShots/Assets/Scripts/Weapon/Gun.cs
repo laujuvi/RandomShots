@@ -1,16 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour, IGun
 {
+
     public GunStats Stats => _stats;
     [SerializeField] protected GunStats _stats;
-    [SerializeField] Quaternion angleBullet;
+    //[SerializeField] Quaternion angleBullet;
+
+    public Action onEmptyAmmo = delegate { };
 
     private Character owner;
 
-    public GameObject BulletPrefab => _stats.BulletPrefab;
+    public Bullet BulletPrefab { get; set; }
+
     public int MagSize => _stats.MagSize;
     protected int _currentBulletCount;
     public int Damage => _stats.BulletDamage;
@@ -18,13 +23,20 @@ public class Gun : MonoBehaviour, IGun
     public bool IsPlayerLeft => owner.IsPLayerLeft;
     public virtual void Attack()
     {
-        if (_currentBulletCount <= 0) return;
         _currentBulletCount--;
+
+        //if (_currentBulletCount <= 0) return;
+        if (_currentBulletCount <= 0)
+        {
+            onEmptyAmmo.Invoke();
+            Destroy(gameObject);
+        }
+
 
         //Debug.Log(transform.transform.localScale.x);
 
-        var bullet = Instantiate(BulletPrefab, transform.position, angleBullet);
-        bullet.GetComponent<Bullet>().SetOwner(this);
+        // var bullet = Instantiate(BulletPrefab, transform.position, angleBullet);
+        // bullet.GetComponent<Bullet>().SetOwner(this);
     }
 
     public void SetOwner(Character character)

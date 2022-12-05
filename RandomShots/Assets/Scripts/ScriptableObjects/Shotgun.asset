@@ -17,5 +17,5 @@ MonoBehaviour:
     BulletSpeed: 5
     BulletLifeTime: 100
     Cooldown: 0.2
-    MagSize: 10
+    MagSize: 5
     BulletPrefab: {fileID: 7042838548770316483, guid: e155f3278d9ef424f98de383646635c1, type: 3}
