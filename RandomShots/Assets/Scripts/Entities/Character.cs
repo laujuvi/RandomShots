@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -58,31 +57,18 @@ public class Character : Actor
 
         if (queue != null)
         {
-            //if (_tdaQueue.Length >= _maxQueue)
-            //{
-            //    return;
-            //}
-            //else
-            //{
-                Debug.Log("Colision con queue Ammo");
-                PickUpQueue(queue);
-                Debug.Log(_tdaQueue.First());
-                //PickUpStack(stack);   
-            //}
+
+            Debug.Log("Colision con queue Ammo");
+            PickUpQueue(queue);
+            Debug.Log(_tdaQueue.First());
+
         }
 
         if (stack != null)
         {
-            //if (_tdaStack.Length > _maxStack)
-            //{
-            //    return;
-            //} else
-            //{
-                Debug.Log("Colision con queue Gun");
-                Debug.Log(PickUpStack(stack));
-                //PickUpStack(stack);   
-            //}
 
+            Debug.Log("Colision con queue Gun");
+            Debug.Log(PickUpStack(stack));
 
         }
 
@@ -98,6 +84,7 @@ public class Character : Actor
     public void Reload() => _gun?.Reload();
     public void Jump()
     {
+        Debug.Log("ENTER JUMP");
 
         GameManager.instance.AddEventQueue(_cmdMoveJump);
 
@@ -107,7 +94,8 @@ public class Character : Actor
         //}
     }
 
-    public void MoveLeft() {
+    public void MoveLeft()
+    {
 
         if (!isPlayerLeft)
         {
@@ -118,7 +106,8 @@ public class Character : Actor
 
 
     }
-    public void MoveRight() {
+    public void MoveRight()
+    {
 
         if (isPlayerLeft)
         {
@@ -170,13 +159,14 @@ public class Character : Actor
     }
     private bool IsGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(_boxCollider2D.bounds.center, _boxCollider2D.bounds.size , 0f, Vector2.down, 0.1f, _platformLayerMask);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(_boxCollider2D.bounds.center, _boxCollider2D.bounds.size, 0f, Vector2.down, 0.1f, _platformLayerMask);
 
         Color rayColor;
         if (raycastHit.collider != null)
         {
             rayColor = Color.green;
-        } else
+        }
+        else
         {
             rayColor = Color.red;
         }
@@ -187,7 +177,7 @@ public class Character : Actor
 
 
         //Debug.Log(raycastHit.collider);
-        return raycastHit.collider != null; 
+        return raycastHit.collider != null;
     }
 
     private void PlayerFlip()

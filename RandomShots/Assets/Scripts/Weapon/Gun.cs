@@ -6,6 +6,7 @@ public class Gun : MonoBehaviour, IGun
 {
     public GunStats Stats => _stats;
     [SerializeField] protected GunStats _stats;
+    [SerializeField] Quaternion angleBullet;
 
     private Character owner;
 
@@ -20,9 +21,9 @@ public class Gun : MonoBehaviour, IGun
         if (_currentBulletCount <= 0) return;
         _currentBulletCount--;
 
-        Debug.Log(transform.transform.localScale.x);
+        //Debug.Log(transform.transform.localScale.x);
 
-        var bullet = Instantiate(BulletPrefab, transform.position, transform.rotation);
+        var bullet = Instantiate(BulletPrefab, transform.position, angleBullet);
         bullet.GetComponent<Bullet>().SetOwner(this);
     }
 

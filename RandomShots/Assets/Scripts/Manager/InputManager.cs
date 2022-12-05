@@ -13,7 +13,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private KeyCode _weapon3 = KeyCode.Alpha3;
 
     // BINDING KEYS - ACTIONS
-    [SerializeField] private KeyCode _attack = KeyCode.Mouse0;
+    [SerializeField] private KeyCode _attack = KeyCode.J;
     [SerializeField] private KeyCode _reload = KeyCode.R;
     [SerializeField] private KeyCode _jump = KeyCode.Space;
 

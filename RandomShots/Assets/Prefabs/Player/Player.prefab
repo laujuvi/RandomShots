@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5616720304198600994}
   - component: {fileID: 1827360461770921642}
-  - component: {fileID: 99056212}
   - component: {fileID: 99056213}
   - component: {fileID: 99056205}
   - component: {fileID: 99056208}
   - component: {fileID: 99056209}
+  - component: {fileID: 99056212}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -90,27 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &99056212
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054876827144050076}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.5
-  m_LinearDrag: 0
-  m_AngularDrag: 1
-  m_GravityScale: 4
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!61 &99056213
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -156,12 +135,13 @@ MonoBehaviour:
   _platformLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _jumpForce: 8
+  _jumpForce: 80
   _playerBody: {fileID: 99056212}
   _boxCollider2D: {fileID: 99056213}
   _weaponTransform: {fileID: 2013300892753723101}
   _playerTransform: {fileID: 5616720304198600994}
-  _playerSprite: {fileID: 0}
+  _maxStack: 5
+  _maxQueue: 5
 --- !u!114 &99056208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +157,7 @@ MonoBehaviour:
   _weapon1: 49
   _weapon2: 50
   _weapon3: 51
-  _attack: 323
+  _attack: 106
   _reload: 114
   _jump: 32
   _moveBack: 0
@@ -196,6 +176,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats: {fileID: 11400000, guid: 0d2db7b8f9ddeb842a4fb2aaec98e812, type: 2}
+--- !u!50 &99056212
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054876827144050076}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.5
+  m_LinearDrag: 0
+  m_AngularDrag: 1
+  m_GravityScale: 4
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &7819480763174638799
 GameObject:
   m_ObjectHideFlags: 0
