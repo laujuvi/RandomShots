@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a48fc71a1e552b4e84ec46bacace435, type: 3}
-  m_Name: Gun
+  m_Name: Smg
   m_EditorClassIdentifier: 
   _stasts:
-    BulletDamage: 0
-    BulletSpeed: 0
-    BulletLifeTime: 0
-    Cooldown: 0
-    MagSize: 0
+    BulletDamage: 50
+    BulletSpeed: 10
+    BulletLifeTime: 100
+    Cooldown: 0.1
+    MagSize: 10
     BulletPrefab: {fileID: 7042838548770316483, guid: bacea6e01c17b994fbca3024590a2978, type: 3}
