@@ -1,0 +1,816 @@
+fileFormatVersion: 2
+guid: 924f8d90b9d78a745848ca43c3f9c72c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 45
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_1
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1275
+        width: 38
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3815db8eaa5c8d94293040934d60e774
+      internalID: 617348523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_0
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 1275
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4d5110923847384eb9f3a7cd6db6f70
+      internalID: -1976526656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_2
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1275
+        width: 39
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7227590ba166a594e93fdab0131945ec
+      internalID: 1333471462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_3
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 1274
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c39017ff018ab245b0fcb4dac10d951
+      internalID: -892922094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_4
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 1276
+        width: 38
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d6576548cf48b24893e148f9afe62af
+      internalID: -217855472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_5
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 1275
+        width: 49
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57b84cecfd3277749b00a43012fce6e9
+      internalID: 2045319938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1228
+        width: 45
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd7f8db562b7f3d40abfdf138aa9aa8b
+      internalID: 1548778687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_7
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1230
+        width: 42
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8face64392ba157479fa380a9346259a
+      internalID: 920286939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_8
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 1230
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 924929b16025a3243b99483904ac43cf
+      internalID: -782457804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_9
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 1232
+        width: 41
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3c702a408d6e2b4e886b607dec6e967
+      internalID: 1588737433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_10
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 1229
+        width: 41
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2795bd5f18c302143ae031e561beda58
+      internalID: 986989546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_11
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 1230
+        width: 41
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2b51a76597579547a5b72a06fdfb6a8
+      internalID: 1814043897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_12
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1229
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0eb559fe363bf140a2a50742ca27676
+      internalID: -37445427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_13
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 1229
+        width: 39
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9276ed1a1bfacf846868ceaf1962feac
+      internalID: -1470983237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_14
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 1229
+        width: 37
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e821a2c2366202419747dbf05df422c
+      internalID: -491153550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_15
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 1230
+        width: 37
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4194a17d9a72be242ac906cb2a2246ac
+      internalID: 1515191757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_16
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 1229
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f0f462f84573154fa65626eeb1200b8
+      internalID: 1661004664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_17
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1181
+        width: 39
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e5b199e2202477428dc28e0a4c7d652
+      internalID: -389839674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_18
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1181
+        width: 39
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e02104cfe891064e817d75c14a9b52a
+      internalID: 352369113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_19
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 1181
+        width: 40
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24de0ff1668253549887ff98c131cb59
+      internalID: -840934051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_20
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1181
+        width: 37
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de0d5ca792049914eaf0b12eaa92b955
+      internalID: -565798500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_21
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 1181
+        width: 37
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aecfa5274ab8344dbb1c58ce19c2079
+      internalID: -1190809160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_22
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1131
+        width: 37
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24a901c4ecad89841bf8bf656dda0206
+      internalID: 1414483943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_23
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1131
+        width: 35
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdb1d87e7a7b1214d8f103188b3922c9
+      internalID: 995779490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_24
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1131
+        width: 34
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fb6a3e598218ff4988536e949ade47b
+      internalID: -2138909161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_25
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 1131
+        width: 34
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b7b0d61b352aac4c8613f53e0204d2b
+      internalID: 1570908137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_26
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 1131
+        width: 36
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2e7b25509a590459b86ae37ad626f0
+      internalID: -1615787659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_27
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 1131
+        width: 36
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d01374b5e4031f4fb139f272c86058f
+      internalID: 1590412445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_28
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 977
+        width: 45
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad82b73289114546ad237f64af3e75e
+      internalID: -1902989561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_29
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 977
+        width: 43
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd95c5478e43ee41a38386f8fe88204
+      internalID: 1224199349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal Slug  Rebel Soldier Bazooka_30
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 977
+        width: 39
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f90738a49d869fa468add6313148db07
+      internalID: -1982433433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Metal Slug  Rebel Soldier Bazooka_4: -217855472
+      Metal Slug  Rebel Soldier Bazooka_30: -1982433433
+      Metal Slug  Rebel Soldier Bazooka_6: 1548778687
+      Metal Slug  Rebel Soldier Bazooka_13: -1470983237
+      Metal Slug  Rebel Soldier Bazooka_24: -2138909161
+      Metal Slug  Rebel Soldier Bazooka_26: -1615787659
+      Metal Slug  Rebel Soldier Bazooka_16: 1661004664
+      Metal Slug  Rebel Soldier Bazooka_3: -892922094
+      Metal Slug  Rebel Soldier Bazooka_27: 1590412445
+      Metal Slug  Rebel Soldier Bazooka_1: 617348523
+      Metal Slug  Rebel Soldier Bazooka_25: 1570908137
+      Metal Slug  Rebel Soldier Bazooka_28: -1902989561
+      Metal Slug  Rebel Soldier Bazooka_12: -37445427
+      Metal Slug  Rebel Soldier Bazooka_7: 920286939
+      Metal Slug  Rebel Soldier Bazooka_10: 986989546
+      Metal Slug  Rebel Soldier Bazooka_5: 2045319938
+      Metal Slug  Rebel Soldier Bazooka_19: -840934051
+      Metal Slug  Rebel Soldier Bazooka_20: -565798500
+      Metal Slug  Rebel Soldier Bazooka_11: 1814043897
+      Metal Slug  Rebel Soldier Bazooka_14: -491153550
+      Metal Slug  Rebel Soldier Bazooka_0: -1976526656
+      Metal Slug  Rebel Soldier Bazooka_9: 1588737433
+      Metal Slug  Rebel Soldier Bazooka_15: 1515191757
+      Metal Slug  Rebel Soldier Bazooka_2: 1333471462
+      Metal Slug  Rebel Soldier Bazooka_18: 352369113
+      Metal Slug  Rebel Soldier Bazooka_22: 1414483943
+      Metal Slug  Rebel Soldier Bazooka_21: -1190809160
+      Metal Slug  Rebel Soldier Bazooka_29: 1224199349
+      Metal Slug  Rebel Soldier Bazooka_17: -389839674
+      Metal Slug  Rebel Soldier Bazooka_8: -782457804
+      Metal Slug  Rebel Soldier Bazooka_23: 995779490
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

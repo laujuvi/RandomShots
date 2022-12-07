@@ -18,4 +18,4 @@ MonoBehaviour:
     BulletLifeTime: 0
     Cooldown: 0
     MagSize: 0
-    BulletPrefab: {fileID: 7042838548770316483, guid: e155f3278d9ef424f98de383646635c1, type: 3}
+    BulletPrefab: {fileID: 7042838548770316483, guid: bacea6e01c17b994fbca3024590a2978, type: 3}
