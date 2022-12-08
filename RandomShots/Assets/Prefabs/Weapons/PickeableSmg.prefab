@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4730686296375507795}
   - component: {fileID: 4730686296375507792}
   m_Layer: 0
-  m_Name: PickeablePistol 1
+  m_Name: PickeableSmg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,4 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b078e2bae5b4e3b44982fe476869b2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunType: {fileID: -998535790133610922, guid: bc6b1895a58e38c4f8b0afcd5d8e9c8b, type: 3}
+  gunType: 3

@@ -29,7 +29,8 @@ public class Gun : MonoBehaviour, IGun
         if (_currentBulletCount <= 0)
         {
             onEmptyAmmo.Invoke();
-            Destroy(gameObject);
+            Debug.Log("OUT OF AMMO!");
+            // Destroy(gameObject);
         }
 
 

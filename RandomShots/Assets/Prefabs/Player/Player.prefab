@@ -129,9 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc9de994594f364daa15e9edd1cc9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gunPrefabs:
-  - {fileID: 4651560250207634571, guid: 412aa7edd9d1b4f429c71c21998d4369, type: 3}
-  - {fileID: 714258807415988530, guid: 135756702e3733e4aaf0963e9db180b7, type: 3}
+  _pistolPrefab: {fileID: 714258807415988530, guid: 135756702e3733e4aaf0963e9db180b7, type: 3}
+  _shotgunPrefab: {fileID: 4651560250207634571, guid: 412aa7edd9d1b4f429c71c21998d4369, type: 3}
+  _smgPrefab: {fileID: -998535790133610922, guid: bc6b1895a58e38c4f8b0afcd5d8e9c8b, type: 3}
   _gun: {fileID: 0}
   _platformLayerMask:
     serializedVersion: 2
@@ -144,6 +144,7 @@ MonoBehaviour:
   _maxStack: 5
   _maxQueue: 5
   _defaultBullet: {fileID: 4235557510737378364, guid: bacea6e01c17b994fbca3024590a2978, type: 3}
+  lifeController: {fileID: 0}
 --- !u!114 &833117021710398081
 MonoBehaviour:
   m_ObjectHideFlags: 0

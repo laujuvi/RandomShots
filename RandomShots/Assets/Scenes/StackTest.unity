@@ -349,11 +349,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4730686296375507794, guid: 3834f1e4e9c239a469f7e2f446b2787a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.74
+      value: -1.9
       objectReference: {fileID: 0}
     - target: {fileID: 4730686296375507794, guid: 3834f1e4e9c239a469f7e2f446b2787a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.19
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 4730686296375507794, guid: 3834f1e4e9c239a469f7e2f446b2787a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -398,7 +398,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4730686296375507791, guid: f8cce5c9e07edfa45b03534bdfe2ce85, type: 3}
       propertyPath: m_Name
-      value: PickeablePistol 1
+      value: PickeableSmg
       objectReference: {fileID: 0}
     - target: {fileID: 4730686296375507794, guid: f8cce5c9e07edfa45b03534bdfe2ce85, type: 3}
       propertyPath: m_RootOrder
@@ -568,9 +568,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 833117021710398108, guid: e78cd51ce0ff65b498c32afca0bfc158, type: 3}
+      propertyPath: count
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 833117021710398108, guid: e78cd51ce0ff65b498c32afca0bfc158, type: 3}
+      propertyPath: _maxQueue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 833117021710398108, guid: e78cd51ce0ff65b498c32afca0bfc158, type: 3}
+      propertyPath: _maxStack
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 833117021710398108, guid: e78cd51ce0ff65b498c32afca0bfc158, type: 3}
       propertyPath: lifeController
       value: 
       objectReference: {fileID: 1581935169}
+    - target: {fileID: 833117021710398108, guid: e78cd51ce0ff65b498c32afca0bfc158, type: 3}
+      propertyPath: _gunPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 833117021710398108, guid: e78cd51ce0ff65b498c32afca0bfc158, type: 3}
+      propertyPath: _gunPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: -998535790133610922, guid: bc6b1895a58e38c4f8b0afcd5d8e9c8b, type: 3}
     - target: {fileID: 1660614479670156621, guid: e78cd51ce0ff65b498c32afca0bfc158, type: 3}
       propertyPath: m_Name
       value: Player
@@ -638,11 +658,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3264665977764230172, guid: c5a9338213f0a934a975519972d2cdb9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.2200003
+      value: -2.99
       objectReference: {fileID: 0}
     - target: {fileID: 3264665977764230172, guid: c5a9338213f0a934a975519972d2cdb9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.206095
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 3264665977764230172, guid: c5a9338213f0a934a975519972d2cdb9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -695,11 +715,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3264665977764230172, guid: c5a9338213f0a934a975519972d2cdb9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.49
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 3264665977764230172, guid: c5a9338213f0a934a975519972d2cdb9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.19
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 3264665977764230172, guid: c5a9338213f0a934a975519972d2cdb9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -820,11 +840,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4730686296375507794, guid: 3834f1e4e9c239a469f7e2f446b2787a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.0362787
+      value: -0.89
       objectReference: {fileID: 0}
     - target: {fileID: 4730686296375507794, guid: 3834f1e4e9c239a469f7e2f446b2787a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.206095
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 4730686296375507794, guid: 3834f1e4e9c239a469f7e2f446b2787a, type: 3}
       propertyPath: m_LocalPosition.z

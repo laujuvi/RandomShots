@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickeableGun : MonoBehaviour
 {
-    [SerializeField] public Gun gunType;
+    [SerializeField] public WeaponsPicked gunType;
     private void OnTriggerEnter2D(Collider2D collision)
     {
 

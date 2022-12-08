@@ -6,6 +6,8 @@ public class CmdAttack : ICommand
 {
     private IGun _gun;
 
+    public IGun Gun => _gun;
+
     public CmdAttack(IGun gun)
     {
         _gun = gun;

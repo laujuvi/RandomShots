@@ -1,10 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+
+public enum WeaponsPicked {Empty ,Pistol, Shotgun, Smg};
 
 public class Character : Actor
 {
-    [SerializeField] private List<Gun> _gunPrefabs;
+    Dictionary<WeaponsPicked, CmdAttack> weaponCommand = new Dictionary<WeaponsPicked, CmdAttack>();
+    Dictionary<WeaponsPicked, Gun> weaponReference = new Dictionary<WeaponsPicked, Gun>();
+
+
+    [SerializeField] private Pistol _pistolPrefab;
+    [SerializeField] private Shotgun _shotgunPrefab;
+    [SerializeField] private Smg _smgPrefab;
+
     [SerializeField] private Gun _gun;
+
 
     [SerializeField] private LayerMask _platformLayerMask;
 
@@ -28,7 +39,7 @@ public class Character : Actor
     private CmdJump _cmdMoveJump;
     private CmdAttack _cmdAttack;
 
-    private TDAStack<Gun> _tdaStack;
+    private TDAStack<WeaponsPicked> _tdaStack;
     private TDAQueue<Bullet> _tdaQueue;
     private Collider2D _lastCollider;
 
@@ -37,7 +48,11 @@ public class Character : Actor
 
     private void Start()
     {
-        //ChangeWeapon(0);
+
+        var pistol = Instantiate<Gun>(_pistolPrefab, _weaponTransform.position, _weaponTransform.rotation, transform);
+        var shotgun = Instantiate<Gun>(_shotgunPrefab, _weaponTransform.position, _weaponTransform.rotation, transform);
+        var smg = Instantiate<Gun>(_smgPrefab, _weaponTransform.position, _weaponTransform.rotation, transform);
+
         lifeController.InitializateLife();
         var mc = GetComponent<MovementController>();
 
@@ -45,10 +60,16 @@ public class Character : Actor
         _cmdMoveRight = new CmdMove(mc, Vector2.right);
         _cmdMoveJump = new CmdJump(mc, Vector2.up, _playerBody, _jumpForce);
 
-        _tdaStack = new TDAStack<Gun>(_maxStack);
+        _tdaStack = new TDAStack<WeaponsPicked>(_maxStack);
         _tdaQueue = new TDAQueue<Bullet>(_maxQueue);
 
+        weaponReference.Add(WeaponsPicked.Pistol, pistol);
+        weaponReference.Add(WeaponsPicked.Shotgun, shotgun);
+        weaponReference.Add(WeaponsPicked.Smg, smg);
 
+        weaponCommand.Add(WeaponsPicked.Pistol, new CmdAttack(pistol));
+        weaponCommand.Add(WeaponsPicked.Shotgun, new CmdAttack(shotgun));
+        weaponCommand.Add(WeaponsPicked.Smg, new CmdAttack(smg));
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -59,16 +80,14 @@ public class Character : Actor
         if (queue != null)
         {
 
-            Debug.Log("Colision con queue Ammo");
-            Debug.Log(PickUpQueue(queue.bulletType));
+            PickUpQueue(queue.bulletType);
 
         }
 
         if (stack != null)
         {
 
-            Debug.Log("Colision con stack Gun");
-            Debug.Log(PickUpStack(stack.gunType));
+            PickUpStack(stack.gunType);
             if (_gun == null) ChangeWeapon();
 
         }
@@ -76,42 +95,16 @@ public class Character : Actor
         _lastCollider = collision;
         if (collision.gameObject.tag == "BulletEnemy")
         {
-            Debug.Log("SADASDA");
             BulletEnemyPower bulletEnemyPower = collision.gameObject.GetComponent<BulletEnemyPower>();
             lifeController.GetDamage(bulletEnemyPower.damage);
             Destroy(collision.gameObject);
         }
     }
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (_lastCollider == collision.collider) return;
-    //    var queue = collision.collider.gameObject.GetComponent<Ammo>();
-    //    var stack = collision.collider.gameObject.GetComponent<PickeableGun>();
-
-    //    if (queue != null)
-    //    {
-
-    //        Debug.Log("Colision con queue Ammo");
-    //        PickUpQueue(queue);
-    //        Debug.Log(_tdaQueue.First());
-
-    //    }
-
-    //    if (stack != null)
-    //    {
-
-    //        Debug.Log("Colision con queue Gun");
-    //        Debug.Log(PickUpStack(stack.gunType));
-
-    //    }
-
-    //    _lastCollider = collision.collider;
-    //}
-
+    
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider == _lastCollider) _lastCollider = null;
-       
+
 
     }
 
@@ -126,10 +119,6 @@ public class Character : Actor
 
         GameManager.instance.AddEventQueue(_cmdMoveJump);
 
-        //if (IsGrounded())
-        //{
-        //    GameManager.instance.AddEventQueue(_cmdMoveJump);
-        //}
     }
 
     public void MoveLeft()
@@ -155,11 +144,9 @@ public class Character : Actor
 
     }
 
-    public Gun PickUpStack(Gun gun)
+    public WeaponsPicked PickUpStack(WeaponsPicked weapon)
     {
-        _tdaStack.Stack(gun);
-
-
+        _tdaStack.Stack(weapon);
 
         return _tdaStack.Top();
     }
@@ -172,38 +159,49 @@ public class Character : Actor
 
     public void ChangeWeapon()
     {
+        var unstackedWeapon = _tdaStack.Unstack();
+        Debug.Log($"Changing weapon to {unstackedWeapon}");
         
-        var prefab = _tdaStack.Unstack();
-        _gun = Instantiate<Gun>(prefab, _weaponTransform.position, _weaponTransform.rotation, transform);
+
+        if (unstackedWeapon == WeaponsPicked.Empty)
+        {
+            _cmdAttack = null;
+            return;
+        }
+
+        // desuscribe  las armas
+        foreach (var gun in weaponReference.Values)
+        {
+            gun.onEmptyAmmo = delegate { };
+        }
+
+        _gun = weaponReference[unstackedWeapon];
         _gun.SetOwner(this);
         _gun.Reload();
-        _gun.onEmptyAmmo += OutOfAmmo;
-        _cmdAttack = new CmdAttack(_gun);
 
-        if (_tdaQueue.Length <= 0)
-        {
-            _gun.BulletPrefab = _defaultBullet;
-        } else
-        {
-            _gun.BulletPrefab = _tdaQueue.Dequeue();
-        }
+        _gun.onEmptyAmmo += OutOfAmmo;
+        _cmdAttack = weaponCommand[unstackedWeapon];
+
+        CheckBullestGun(_gun);
 
     }
 
+    [SerializeField] private TDAStack<int> numbers = new TDAStack<int>(100);
+    [SerializeField] private int count = 0;
     private void Update()
     {
         IsGrounded();
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            _tdaQueue.Dequeue();
-            Debug.Log(_tdaQueue.Length);
+            numbers.Stack(count);
+            count++;
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            _tdaStack.Unstack();
-            Debug.Log(_tdaStack.Length);
+            Debug.Log(numbers.Unstack());
+            Debug.Log($"Remaining numbers in stack {numbers.Length}");
         }
 
         //PlayerFlip();
@@ -231,6 +229,18 @@ public class Character : Actor
         return raycastHit.collider != null;
     }
 
+    private void CheckBullestGun (Gun gun){
+        if (_tdaQueue.Length <= 0)
+        {
+            gun.BulletPrefab = _defaultBullet;
+        }
+        else
+        {
+            gun.BulletPrefab = _tdaQueue.Dequeue();
+        }
+
+    }
+
     private void PlayerFlip()
     {
 
@@ -243,7 +253,9 @@ public class Character : Actor
 
     private void OutOfAmmo()
     {
-        if (_tdaStack.Length > 1) ChangeWeapon();
+        _gun = null;
+        Debug.Log($"Remaining weapons in stack: {_tdaStack.Length}");
+        if (_tdaStack.Length > 0) ChangeWeapon();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

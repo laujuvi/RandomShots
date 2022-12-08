@@ -7,7 +7,7 @@ public class TDAStack<T> : IStack<T>
     T[] listStack; // arreglo en donde se guarda la informacion
     int index; // variable
 
-    public int Length => index + 1;
+    public int Length => index;
 
     private Gun gun;
     private List<Gun> _gunPrefabs;

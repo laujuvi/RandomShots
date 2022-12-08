@@ -124,4 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b078e2bae5b4e3b44982fe476869b2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunType: {fileID: 4651560250207634571, guid: 412aa7edd9d1b4f429c71c21998d4369, type: 3}
+  gunType: 2
