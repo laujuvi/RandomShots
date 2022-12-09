@@ -6,63 +6,68 @@ public enum WeaponsPicked {Empty ,Pistol, Shotgun, Smg};
 
 public class Character : Actor
 {
+    //DICCIONARIOS
     Dictionary<WeaponsPicked, CmdAttack> weaponCommand = new Dictionary<WeaponsPicked, CmdAttack>();
     Dictionary<WeaponsPicked, Gun> weaponReference = new Dictionary<WeaponsPicked, Gun>();
 
-
+    //PREFABS DE ARMAS
     [SerializeField] private Pistol _pistolPrefab;
     [SerializeField] private Shotgun _shotgunPrefab;
     [SerializeField] private Smg _smgPrefab;
-
     [SerializeField] private Gun _gun;
 
+    //PREFABS BULLETS
+    [SerializeField] private Bullet _defaultBullet;
 
+    //LEYERS
     [SerializeField] private LayerMask _platformLayerMask;
 
+    //PLAYER
     [SerializeField] private float _jumpForce;
     [SerializeField] private Rigidbody2D _playerBody;
     [SerializeField] private BoxCollider2D _boxCollider2D;
     [SerializeField] private Transform _weaponTransform;
     [SerializeField] private Transform _playerTransform;
+    [SerializeField] private LifeController lifeController;
+    private Collider2D _lastCollider;
+    private bool isPlayerLeft = false;
+    public bool IsPLayerLeft => isPlayerLeft;
 
+    //TDA
     [SerializeField] private int _maxStack;
     [SerializeField] private int _maxQueue;
+    private TDAStack<WeaponsPicked> _tdaStack;
+    private TDAQueue<Bullet> _tdaQueue;
 
-    [SerializeField] private Bullet _defaultBullet;
-
-    [SerializeField] private LifeController lifeController;
-
-    /* COMMAND LIST */
-
+    // COMMAND LIST
     private CmdMove _cmdMoveLeft;
     private CmdMove _cmdMoveRight;
     private CmdJump _cmdMoveJump;
     private CmdAttack _cmdAttack;
 
-    private TDAStack<WeaponsPicked> _tdaStack;
-    private TDAQueue<Bullet> _tdaQueue;
-    private Collider2D _lastCollider;
-
-    private bool isPlayerLeft = false;
-    public bool IsPLayerLeft => isPlayerLeft;
+    /*START*/
 
     private void Start()
     {
-
+        // INSTANCIACION DE LOS PREFABS
         var pistol = Instantiate<Gun>(_pistolPrefab, _weaponTransform.position, _weaponTransform.rotation, transform);
         var shotgun = Instantiate<Gun>(_shotgunPrefab, _weaponTransform.position, _weaponTransform.rotation, transform);
         var smg = Instantiate<Gun>(_smgPrefab, _weaponTransform.position, _weaponTransform.rotation, transform);
 
+        // LIFE CONTROLLER
         lifeController.InitializateLife();
-        var mc = GetComponent<MovementController>();
 
+        // COMMANDS
+        var mc = GetComponent<MovementController>();
         _cmdMoveLeft = new CmdMove(mc, Vector2.left);
         _cmdMoveRight = new CmdMove(mc, Vector2.right);
         _cmdMoveJump = new CmdJump(mc, Vector2.up, _playerBody, _jumpForce);
 
+        //TDA
         _tdaStack = new TDAStack<WeaponsPicked>(_maxStack);
         _tdaQueue = new TDAQueue<Bullet>(_maxQueue);
 
+        // AGREGADO DATOS A LOS DICCIONARIOS
         weaponReference.Add(WeaponsPicked.Pistol, pistol);
         weaponReference.Add(WeaponsPicked.Shotgun, shotgun);
         weaponReference.Add(WeaponsPicked.Smg, smg);
@@ -71,28 +76,30 @@ public class Character : Actor
         weaponCommand.Add(WeaponsPicked.Shotgun, new CmdAttack(shotgun));
         weaponCommand.Add(WeaponsPicked.Smg, new CmdAttack(smg));
     }
+
+    /*COLISIONES*/
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (_lastCollider == collision) return;
+
         var queue = collision.gameObject.GetComponent<PickeableAmmo>();
         var stack = collision.gameObject.GetComponent<PickeableGun>();
 
         if (queue != null)
         {
-
             PickUpQueue(queue.bulletType);
-
         }
 
         if (stack != null)
         {
-
             PickUpStack(stack.gunType);
             if (_gun == null) ChangeWeapon();
-
         }
 
         _lastCollider = collision;
+
         if (collision.gameObject.tag == "BulletEnemy")
         {
             BulletEnemyPower bulletEnemyPower = collision.gameObject.GetComponent<BulletEnemyPower>();
@@ -101,49 +108,35 @@ public class Character : Actor
         }
     }
     
+    //CUANDO NO COLISIONO EL COLLIDER QUEDA EN NULL
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider == _lastCollider) _lastCollider = null;
-
-
     }
+
+
+    /*ACCIONES DEL PLAYER*/
 
     public void Attack()
     {
         if (_gun != null) GameManager.instance.AddEventQueue(_cmdAttack);
     }
     public void Reload() => _gun?.Reload();
-    public void Jump()
-    {
-        Debug.Log("ENTER JUMP");
-
-        GameManager.instance.AddEventQueue(_cmdMoveJump);
-
-    }
+    public void Jump()=> GameManager.instance.AddEventQueue(_cmdMoveJump);
 
     public void MoveLeft()
     {
-
         if (!isPlayerLeft)
         {
             PlayerFlip();
         }
         GameManager.instance.AddEventQueue(_cmdMoveLeft);
 
-
-
-    }
-    public void MoveRight()
-    {
-
-        if (isPlayerLeft)
-        {
-            PlayerFlip();
-        }
-        GameManager.instance.AddEventQueue(_cmdMoveRight);
-
     }
 
+    /*ACCIONES DEL TDA*/
+
+    // STEACKEA LAS ARMAS PICKEADAS
     public WeaponsPicked PickUpStack(WeaponsPicked weapon)
     {
         _tdaStack.Stack(weapon);
@@ -151,25 +144,26 @@ public class Character : Actor
         return _tdaStack.Top();
     }
 
+    //HACE UN QUEUE DE LAS BALLAS PICKEADAS
     public Bullet PickUpQueue(Bullet bullet)
     {
         _tdaQueue.Queue(bullet);
         return _tdaQueue.First();
     }
 
+    /*FUNCIONES DE LAS ARMAS*/
     public void ChangeWeapon()
     {
         var unstackedWeapon = _tdaStack.Unstack();
-        Debug.Log($"Changing weapon to {unstackedWeapon}");
-        
 
+        //VERIFICA SI HAY ARMAS EN EL STACK
         if (unstackedWeapon == WeaponsPicked.Empty)
         {
             _cmdAttack = null;
             return;
         }
 
-        // desuscribe  las armas
+        // DESUSCRIBE EL EVENTO
         foreach (var gun in weaponReference.Values)
         {
             gun.onEmptyAmmo = delegate { };
@@ -179,32 +173,37 @@ public class Character : Actor
         _gun.SetOwner(this);
         _gun.Reload();
 
+        // SUSCRIBE EL EVENTO
         _gun.onEmptyAmmo += OutOfAmmo;
+
         _cmdAttack = weaponCommand[unstackedWeapon];
 
         CheckBullestGun(_gun);
 
     }
 
-    [SerializeField] private TDAStack<int> numbers = new TDAStack<int>(100);
-    [SerializeField] private int count = 0;
+    private void CheckBullestGun (Gun gun){
+        if (_tdaQueue.Length <= 0)
+        {
+            gun.BulletPrefab = _defaultBullet;
+        }
+        else
+        {
+            gun.BulletPrefab = _tdaQueue.Dequeue();
+        }
+
+    }
+    private void OutOfAmmo()
+    {
+        _gun = null;
+        Debug.Log($"Remaining weapons in stack: {_tdaStack.Length}");
+        if (_tdaStack.Length > 0) ChangeWeapon();
+    }
+
+    /*CHEQUEOS DEL ISGROUND*/
     private void Update()
     {
         IsGrounded();
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            numbers.Stack(count);
-            count++;
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log(numbers.Unstack());
-            Debug.Log($"Remaining numbers in stack {numbers.Length}");
-        }
-
-        //PlayerFlip();
     }
     private bool IsGrounded()
     {
@@ -224,23 +223,9 @@ public class Character : Actor
         Debug.DrawRay(_boxCollider2D.bounds.center - new Vector3(_boxCollider2D.bounds.extents.x, 0), Vector2.down * (_boxCollider2D.bounds.extents.y + 0.1f), rayColor);
         Debug.DrawRay(_boxCollider2D.bounds.center - new Vector3(_boxCollider2D.bounds.extents.x, _boxCollider2D.bounds.extents.y + 0.1f), Vector2.right * (_boxCollider2D.bounds.extents.x), rayColor);
 
-
-        //Debug.Log(raycastHit.collider);
         return raycastHit.collider != null;
     }
-
-    private void CheckBullestGun (Gun gun){
-        if (_tdaQueue.Length <= 0)
-        {
-            gun.BulletPrefab = _defaultBullet;
-        }
-        else
-        {
-            gun.BulletPrefab = _tdaQueue.Dequeue();
-        }
-
-    }
-
+    //INVIERTE EL PLAYER CUANDO SE MUEVE PARA ALGUNA DIRECCION
     private void PlayerFlip()
     {
 
@@ -251,15 +236,14 @@ public class Character : Actor
         isPlayerLeft = !isPlayerLeft;
     }
 
-    private void OutOfAmmo()
+    public void MoveRight()
     {
-        _gun = null;
-        Debug.Log($"Remaining weapons in stack: {_tdaStack.Length}");
-        if (_tdaStack.Length > 0) ChangeWeapon();
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-     
-    }
 
+        if (isPlayerLeft)
+        {
+            PlayerFlip();
+        }
+        GameManager.instance.AddEventQueue(_cmdMoveRight);
+
+    }
 }
