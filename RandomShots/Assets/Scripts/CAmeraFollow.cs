@@ -6,7 +6,7 @@ public class CAmeraFollow : MonoBehaviour
 {
 
     public GameObject player;
-    public Camera camera;
+    public new Camera camera;
 
     private void Update()
     {

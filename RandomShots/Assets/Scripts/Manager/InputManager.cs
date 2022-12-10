@@ -8,9 +8,9 @@ public class InputManager : MonoBehaviour
     private Character _character;
 
     // BINDING KEYS - WEAPONS
-    [SerializeField] private KeyCode _weapon1 = KeyCode.Alpha1;
-    [SerializeField] private KeyCode _weapon2 = KeyCode.Alpha2;
-    [SerializeField] private KeyCode _weapon3 = KeyCode.Alpha3;
+    //[SerializeField] private KeyCode _weapon1 = KeyCode.Alpha1;
+    //[SerializeField] private KeyCode _weapon2 = KeyCode.Alpha2;
+    //[SerializeField] private KeyCode _weapon3 = KeyCode.Alpha3;
 
     // BINDING KEYS - ACTIONS
     [SerializeField] private KeyCode _attack = KeyCode.J;
@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private KeyCode _jump = KeyCode.Space;
 
     //[SerializeField] private KeyCode _moveForward = KeyCode.W;
-    [SerializeField] private KeyCode _moveBack = KeyCode.S;
+    //[SerializeField] private KeyCode _moveBack = KeyCode.S;
     [SerializeField] private KeyCode _moveLeft = KeyCode.A;
     [SerializeField] private KeyCode _moveRight = KeyCode.D;
 
