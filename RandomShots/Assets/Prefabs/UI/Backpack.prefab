@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 508977662800602478}
+  - component: {fileID: 1513854988087118211}
   - component: {fileID: 508977662800602479}
   m_Layer: 0
   m_Name: Backpack
@@ -17,21 +17,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &508977662800602478
-Transform:
+--- !u!224 &1513854988087118211
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508977662800602472}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -81.14679, y: -165.07358, z: 4.217482}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 4.217482}
+  m_LocalScale: {x: 2.025, y: 0.31247, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -224, y: -224}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &508977662800602479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,6 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8286257266076706325, guid: 7596a6bc249599740822571f6df33fdc, type: 3}
+  - {fileID: 8286257266076706325, guid: 7596a6bc249599740822571f6df33fdc, type: 3}
   - {fileID: 0}
