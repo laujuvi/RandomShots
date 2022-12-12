@@ -51,13 +51,14 @@ public class TDAStack<T> : IStack<T>
     }
     public T[] Print()
     {
+        var itemList = new T[index];
         for (int i = index - 1; i >= 0; i--)
         {
-
+            itemList[i] = listStack[i];
             Debug.Log(listStack[i]);
         }
 
-        return listStack;
+        return itemList;
 
     }
 

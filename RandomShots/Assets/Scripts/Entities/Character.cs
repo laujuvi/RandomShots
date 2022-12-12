@@ -15,7 +15,11 @@ public class Character : Actor
     [SerializeField] private Shotgun _shotgunPrefab;
     [SerializeField] private Smg _smgPrefab;
     [SerializeField] private Gun _gun;
-    
+
+    [SerializeField] private GameObject pistol;
+    [SerializeField] private GameObject smg;
+    [SerializeField] private GameObject shotgun;
+
     [SerializeField] private GameObject pistolOnPlayer;
     [SerializeField] private GameObject smgOnPlayer;
     [SerializeField] private GameObject shotgunOnPlayer;
@@ -23,7 +27,8 @@ public class Character : Actor
     //PREFABS BULLETS
     [SerializeField] private Bullet _defaultBullet;
 
-
+    //BACKPACK
+    [SerializeField] private Backpack _backpack;
 
     //LAYERS
     [SerializeField] private LayerMask _platformLayerMask;
@@ -104,6 +109,7 @@ public class Character : Actor
         if (stack != null)
         {
             PickUpStack(stack.gunType);
+            _backpack.StackWeapons(_tdaStack);
             if (_gun == null) ChangeWeapon();
         }
 
@@ -150,7 +156,6 @@ public class Character : Actor
     public WeaponsPicked PickUpStack(WeaponsPicked weapon)
     {
         _tdaStack.Stack(weapon);
-
         return _tdaStack.Top();
     }
 
@@ -179,31 +184,54 @@ public class Character : Actor
             gun.onEmptyAmmo = delegate { };
         }
 
-        _gun = weaponReference[unstackedWeapon];
+        _backpack.StackWeapons(_tdaStack);
 
+        _gun = weaponReference[unstackedWeapon];
 
         _gun.gameObject.SetActive(true);
 
 
         ////PREGUNTO EL NOMBRE DEL PREFAB DEPENDIENDO ACTIVO IMAGENES EN PANTALLA
+        //if (unstackedWeapon == WeaponsPicked.Pistol)
+        //{
+        //    _gun.gameObject.SetActive(true);
+        //    pistolOnPlayer.gameObject.SetActive(true);
+        //    smgOnPlayer.gameObject.SetActive(false);
+        //    shotgunOnPlayer.gameObject.SetActive(false);
+
+        //}
+        //else if (unstackedWeapon == WeaponsPicked.Smg)
+        //{
+        //    _gun.gameObject.SetActive(true);
+        //    pistolOnPlayer.gameObject.SetActive(false);
+        //    smgOnPlayer.gameObject.SetActive(true);
+        //    shotgunOnPlayer.gameObject.SetActive(false);
+        //}
+        //else if (unstackedWeapon == WeaponsPicked.Shotgun)
+        //{
+        //    _gun.gameObject.SetActive(true);
+        //    pistolOnPlayer.gameObject.SetActive(false);
+        //    smgOnPlayer.gameObject.SetActive(false);
+        //    shotgunOnPlayer.gameObject.SetActive(true);
+        //}
+
         if (unstackedWeapon == WeaponsPicked.Pistol)
         {
-            _gun.gameObject.SetActive(true);
+
             pistolOnPlayer.gameObject.SetActive(true);
             smgOnPlayer.gameObject.SetActive(false);
             shotgunOnPlayer.gameObject.SetActive(false);
-
         }
         else if (unstackedWeapon == WeaponsPicked.Smg)
         {
-            _gun.gameObject.SetActive(true);
+
             pistolOnPlayer.gameObject.SetActive(false);
             smgOnPlayer.gameObject.SetActive(true);
             shotgunOnPlayer.gameObject.SetActive(false);
         }
         else if (unstackedWeapon == WeaponsPicked.Shotgun)
         {
-            _gun.gameObject.SetActive(true);
+
             pistolOnPlayer.gameObject.SetActive(false);
             smgOnPlayer.gameObject.SetActive(false);
             shotgunOnPlayer.gameObject.SetActive(true);
