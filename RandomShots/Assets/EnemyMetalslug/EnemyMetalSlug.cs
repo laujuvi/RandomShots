@@ -71,14 +71,12 @@ public class EnemyMetalSlug : Actor
         {
 
             ISee = true;
-            Debug.Log(ISee);
          
 
         }
         else
         {
             ISee = false;
-            Debug.Log(ISee);
 
         }
     }
