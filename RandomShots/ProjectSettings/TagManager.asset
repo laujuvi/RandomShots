@@ -48,3 +48,6 @@ TagManager:
   - name: Objects
     uniqueID: 44157449
     locked: 0
+  - name: Eggs
+    uniqueID: 1456587735
+    locked: 0

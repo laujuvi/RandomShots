@@ -3,8 +3,18 @@ using UnityEngine;
 
 public class Character : Actor
 {
+
+
     [SerializeField] private List<Gun> _gunPrefabs;
     [SerializeField] private Gun _gun;
+
+    [SerializeField] private GameObject pistol;
+    [SerializeField] private GameObject smg;
+    [SerializeField] private GameObject shotgun;
+
+    [SerializeField] private GameObject pistolOnPlayer;
+    [SerializeField] private GameObject smgOnPlayer;
+    [SerializeField] private GameObject shotgunOnPlayer;
 
     [SerializeField] private LayerMask _platformLayerMask;
 
@@ -19,7 +29,7 @@ public class Character : Actor
 
     [SerializeField] private Bullet _defaultBullet;
 
-    [SerializeField] private LifeController lifeController;
+    [SerializeField] public LifeController lifeController;
 
     /* COMMAND LIST */
 
@@ -50,6 +60,7 @@ public class Character : Actor
 
 
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_lastCollider == collision) return;
@@ -62,6 +73,7 @@ public class Character : Actor
             Debug.Log("Colision con queue Ammo");
             Debug.Log(PickUpQueue(queue.bulletType));
 
+
         }
 
         if (stack != null)
@@ -69,14 +81,20 @@ public class Character : Actor
 
             Debug.Log("Colision con stack Gun");
             Debug.Log(PickUpStack(stack.gunType));
-            if (_gun == null) ChangeWeapon();
 
+         
+
+            if (_gun == null)
+            {
+                ChangeWeapon();
+
+            }
         }
+
 
         _lastCollider = collision;
         if (collision.gameObject.tag == "BulletEnemy")
         {
-            Debug.Log("SADASDA");
             BulletEnemyPower bulletEnemyPower = collision.gameObject.GetComponent<BulletEnemyPower>();
             lifeController.GetDamage(bulletEnemyPower.damage);
             Destroy(collision.gameObject);
@@ -175,6 +193,39 @@ public class Character : Actor
         
         var prefab = _tdaStack.Unstack();
         _gun = Instantiate<Gun>(prefab, _weaponTransform.position, _weaponTransform.rotation, transform);
+
+        //PREGUNTO EL NOMBRE DEL PREFAB DEPENDIENDO ACTIVO IMAGENES EN PANTALLA
+        if (prefab.name == "Pistol")
+        {
+            pistol.gameObject.SetActive(true);
+            smg.gameObject.SetActive(false);
+            shotgun.gameObject.SetActive(false);
+            pistolOnPlayer.gameObject.SetActive(true);
+            smgOnPlayer.gameObject.SetActive(false);
+            shotgunOnPlayer.gameObject.SetActive(false);
+
+        }
+        else if (prefab.name == "Smg")
+        {
+            pistol.gameObject.SetActive(false);
+            smg.gameObject.SetActive(true);
+            shotgun.gameObject.SetActive(false);
+            pistolOnPlayer.gameObject.SetActive(false);
+            smgOnPlayer.gameObject.SetActive(true);
+            shotgunOnPlayer.gameObject.SetActive(false);
+        }
+        else if (prefab.name == "Shotgun")
+        {
+            pistol.gameObject.SetActive(false);
+            smg.gameObject.SetActive(false);
+            shotgun.gameObject.SetActive(true); 
+            pistolOnPlayer.gameObject.SetActive(false);
+            smgOnPlayer.gameObject.SetActive(false);
+            shotgunOnPlayer.gameObject.SetActive(true);
+        }
+
+        //---------------------------------------
+
         _gun.SetOwner(this);
         _gun.Reload();
         _gun.onEmptyAmmo += OutOfAmmo;

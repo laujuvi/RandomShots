@@ -5,14 +5,14 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 public class LifeController : MonoBehaviour
 {
-    public int maxLife = 100;
+    public int maxLife;
     public int currentLife;
     public int CurrrentHealth { get => currentLife; set => currentLife = value; }
 
     public UnityEvent OnHealthChange = new UnityEvent();
     private void Update()
     {
-
+      
     }
     public void InitializateLife()
     {
@@ -36,6 +36,9 @@ public class LifeController : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+    public float GetPorcentageHealth()
+    {
+        return (float)currentLife / maxLife;
+    }
 
-   
 }

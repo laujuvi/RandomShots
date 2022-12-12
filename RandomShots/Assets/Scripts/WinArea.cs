@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class WinArea : MonoBehaviour
 {
+    public int sceneInt;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(sceneInt);
         }
     }
 }
