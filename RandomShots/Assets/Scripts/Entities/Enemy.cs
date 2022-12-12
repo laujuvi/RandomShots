@@ -30,7 +30,6 @@ public class Enemy : MonoBehaviour, IDamageable
         if (collision.CompareTag("Bullet"))
         {
             // var bullet = collision.gameObject.GetComponent<Bullet>();
-            Debug.Log("Colision con bullet");
         }
     }
 }

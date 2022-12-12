@@ -15,11 +15,17 @@ public class Character : Actor
     [SerializeField] private Shotgun _shotgunPrefab;
     [SerializeField] private Smg _smgPrefab;
     [SerializeField] private Gun _gun;
+    
+    [SerializeField] private GameObject pistolOnPlayer;
+    [SerializeField] private GameObject smgOnPlayer;
+    [SerializeField] private GameObject shotgunOnPlayer;
 
     //PREFABS BULLETS
     [SerializeField] private Bullet _defaultBullet;
 
-    //LEYERS
+
+
+    //LAYERS
     [SerializeField] private LayerMask _platformLayerMask;
 
     //PLAYER
@@ -38,6 +44,10 @@ public class Character : Actor
     [SerializeField] private int _maxQueue;
     private TDAStack<WeaponsPicked> _tdaStack;
     private TDAQueue<Bullet> _tdaQueue;
+
+
+    [SerializeField] private Bullet _defaultBullet;
+    [SerializeField] public LifeController lifeController;
 
     // COMMAND LIST
     private CmdMove _cmdMoveLeft;
@@ -97,6 +107,7 @@ public class Character : Actor
             PickUpStack(stack.gunType);
             if (_gun == null) ChangeWeapon();
         }
+
 
         _lastCollider = collision;
 
@@ -170,6 +181,41 @@ public class Character : Actor
         }
 
         _gun = weaponReference[unstackedWeapon];
+        
+
+
+        //PREGUNTO EL NOMBRE DEL PREFAB DEPENDIENDO ACTIVO IMAGENES EN PANTALLA
+        if (unstackedWeapon == "Pistol")
+        {
+            pistol.gameObject.SetActive(true);
+            smg.gameObject.SetActive(false);
+            shotgun.gameObject.SetActive(false);
+            pistolOnPlayer.gameObject.SetActive(true);
+            smgOnPlayer.gameObject.SetActive(false);
+            shotgunOnPlayer.gameObject.SetActive(false);
+
+        }
+        else if (unstackedWeapon == "Smg")
+        {
+            pistol.gameObject.SetActive(false);
+            smg.gameObject.SetActive(true);
+            shotgun.gameObject.SetActive(false);
+            pistolOnPlayer.gameObject.SetActive(false);
+            smgOnPlayer.gameObject.SetActive(true);
+            shotgunOnPlayer.gameObject.SetActive(false);
+        }
+        else if (unstackedWeapon == "Shotgun")
+        {
+            pistol.gameObject.SetActive(false);
+            smg.gameObject.SetActive(false);
+            shotgun.gameObject.SetActive(true); 
+            pistolOnPlayer.gameObject.SetActive(false);
+            smgOnPlayer.gameObject.SetActive(false);
+            shotgunOnPlayer.gameObject.SetActive(true);
+        }
+
+        //---------------------------------------
+
         _gun.SetOwner(this);
         _gun.Reload();
 
