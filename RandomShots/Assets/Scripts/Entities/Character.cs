@@ -34,7 +34,8 @@ public class Character : Actor
     [SerializeField] private BoxCollider2D _boxCollider2D;
     [SerializeField] private Transform _weaponTransform;
     [SerializeField] private Transform _playerTransform;
-    [SerializeField] private LifeController lifeController;
+    [SerializeField] public LifeController lifeController;
+
     private Collider2D _lastCollider;
     private bool isPlayerLeft = false;
     public bool IsPLayerLeft => isPlayerLeft;
@@ -46,8 +47,6 @@ public class Character : Actor
     private TDAQueue<Bullet> _tdaQueue;
 
 
-    [SerializeField] private Bullet _defaultBullet;
-    [SerializeField] public LifeController lifeController;
 
     // COMMAND LIST
     private CmdMove _cmdMoveLeft;
@@ -181,38 +180,40 @@ public class Character : Actor
         }
 
         _gun = weaponReference[unstackedWeapon];
-        
 
 
-        //PREGUNTO EL NOMBRE DEL PREFAB DEPENDIENDO ACTIVO IMAGENES EN PANTALLA
-        if (unstackedWeapon == "Pistol")
-        {
-            pistol.gameObject.SetActive(true);
-            smg.gameObject.SetActive(false);
-            shotgun.gameObject.SetActive(false);
-            pistolOnPlayer.gameObject.SetActive(true);
-            smgOnPlayer.gameObject.SetActive(false);
-            shotgunOnPlayer.gameObject.SetActive(false);
+        _gun.gameObject.SetActive(true);
 
-        }
-        else if (unstackedWeapon == "Smg")
-        {
-            pistol.gameObject.SetActive(false);
-            smg.gameObject.SetActive(true);
-            shotgun.gameObject.SetActive(false);
-            pistolOnPlayer.gameObject.SetActive(false);
-            smgOnPlayer.gameObject.SetActive(true);
-            shotgunOnPlayer.gameObject.SetActive(false);
-        }
-        else if (unstackedWeapon == "Shotgun")
-        {
-            pistol.gameObject.SetActive(false);
-            smg.gameObject.SetActive(false);
-            shotgun.gameObject.SetActive(true); 
-            pistolOnPlayer.gameObject.SetActive(false);
-            smgOnPlayer.gameObject.SetActive(false);
-            shotgunOnPlayer.gameObject.SetActive(true);
-        }
+
+        ////PREGUNTO EL NOMBRE DEL PREFAB DEPENDIENDO ACTIVO IMAGENES EN PANTALLA
+        //if (unstackedWeapon == WeaponsPicked.Pistol)
+        //{
+        //    pistol.gameObject.SetActive(true);
+        //    smg.gameObject.SetActive(false);
+        //    shotgun.gameObject.SetActive(false);
+        //    pistolOnPlayer.gameObject.SetActive(true);
+        //    smgOnPlayer.gameObject.SetActive(false);
+        //    shotgunOnPlayer.gameObject.SetActive(false);
+
+        //}
+        //else if (unstackedWeapon == WeaponsPicked.Smg)
+        //{
+        //    pistol.gameObject.SetActive(false);
+        //    smg.gameObject.SetActive(true);
+        //    shotgun.gameObject.SetActive(false);
+        //    pistolOnPlayer.gameObject.SetActive(false);
+        //    smgOnPlayer.gameObject.SetActive(true);
+        //    shotgunOnPlayer.gameObject.SetActive(false);
+        //}
+        //else if (unstackedWeapon == WeaponsPicked.Shotgun)
+        //{
+        //    pistol.gameObject.SetActive(false);
+        //    smg.gameObject.SetActive(false);
+        //    shotgun.gameObject.SetActive(true); 
+        //    pistolOnPlayer.gameObject.SetActive(false);
+        //    smgOnPlayer.gameObject.SetActive(false);
+        //    shotgunOnPlayer.gameObject.SetActive(true);
+        //}
 
         //---------------------------------------
 
