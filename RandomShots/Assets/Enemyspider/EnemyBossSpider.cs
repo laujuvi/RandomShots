@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using System.Threading.Tasks;
-
 using UnityEngine.SceneManagement;
 
 public class EnemyBossSpider : MonoBehaviour
@@ -48,10 +47,7 @@ public class EnemyBossSpider : MonoBehaviour
         MuestroResultadosAlg("Resultados", AlgDijkstra.distance, nodoselect, grafoEst.Etiqs, AlgDijkstra.nodos);
         ConseguirInt();
         MoveEnemy();
-        if (lifeController.currentLife <= 0)
-        {
-            SceneManager.LoadScene(4);
-        }
+        CheckDead();
     }
     void Main()
     {
@@ -148,6 +144,13 @@ public class EnemyBossSpider : MonoBehaviour
         }
     }
 
+    public void CheckDead()
+    {
+        if (lifeController.currentLife <= 0)
+        {
+            SceneManager.LoadScene(4);
+        }
+    }
     private void MoveEnemy()
     {
         // ME MUEVO A TRAVES DE LOS NODOS
@@ -187,7 +190,6 @@ public class EnemyBossSpider : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player.lifeController.GetDamage(20);
-
         }
     }
 }

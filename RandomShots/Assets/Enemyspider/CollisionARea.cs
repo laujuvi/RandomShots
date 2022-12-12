@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionARea : MonoBehaviour
 {
@@ -16,14 +17,12 @@ public class CollisionARea : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            
             enemy.nodoselect = PropioNumero;
             numeroDeCollision = PropioNumero;
             lifeController.GetDamage(60);
             if (lifeController.currentLife <= 0)
             {
                 enemy.lifeController.GetDamage(100);
-
                 Destroy(collision.gameObject);
             }
         }
