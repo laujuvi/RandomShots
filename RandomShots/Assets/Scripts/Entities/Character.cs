@@ -186,34 +186,28 @@ public class Character : Actor
 
 
         ////PREGUNTO EL NOMBRE DEL PREFAB DEPENDIENDO ACTIVO IMAGENES EN PANTALLA
-        //if (unstackedWeapon == WeaponsPicked.Pistol)
-        //{
-        //    pistol.gameObject.SetActive(true);
-        //    smg.gameObject.SetActive(false);
-        //    shotgun.gameObject.SetActive(false);
-        //    pistolOnPlayer.gameObject.SetActive(true);
-        //    smgOnPlayer.gameObject.SetActive(false);
-        //    shotgunOnPlayer.gameObject.SetActive(false);
+        if (unstackedWeapon == WeaponsPicked.Pistol)
+        {
+            _gun.gameObject.SetActive(true);
+            pistolOnPlayer.gameObject.SetActive(true);
+            smgOnPlayer.gameObject.SetActive(false);
+            shotgunOnPlayer.gameObject.SetActive(false);
 
-        //}
-        //else if (unstackedWeapon == WeaponsPicked.Smg)
-        //{
-        //    pistol.gameObject.SetActive(false);
-        //    smg.gameObject.SetActive(true);
-        //    shotgun.gameObject.SetActive(false);
-        //    pistolOnPlayer.gameObject.SetActive(false);
-        //    smgOnPlayer.gameObject.SetActive(true);
-        //    shotgunOnPlayer.gameObject.SetActive(false);
-        //}
-        //else if (unstackedWeapon == WeaponsPicked.Shotgun)
-        //{
-        //    pistol.gameObject.SetActive(false);
-        //    smg.gameObject.SetActive(false);
-        //    shotgun.gameObject.SetActive(true); 
-        //    pistolOnPlayer.gameObject.SetActive(false);
-        //    smgOnPlayer.gameObject.SetActive(false);
-        //    shotgunOnPlayer.gameObject.SetActive(true);
-        //}
+        }
+        else if (unstackedWeapon == WeaponsPicked.Smg)
+        {
+            _gun.gameObject.SetActive(true);
+            pistolOnPlayer.gameObject.SetActive(false);
+            smgOnPlayer.gameObject.SetActive(true);
+            shotgunOnPlayer.gameObject.SetActive(false);
+        }
+        else if (unstackedWeapon == WeaponsPicked.Shotgun)
+        {
+            _gun.gameObject.SetActive(true);
+            pistolOnPlayer.gameObject.SetActive(false);
+            smgOnPlayer.gameObject.SetActive(false);
+            shotgunOnPlayer.gameObject.SetActive(true);
+        }
 
         //---------------------------------------
 
